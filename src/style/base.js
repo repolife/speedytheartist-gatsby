@@ -2,6 +2,7 @@ import { createGlobalStyle } from "styled-components"
 import styled from "styled-components"
 import nomodel from "../images/no_model.jpg"
 import modelPic from "../images/model.png"
+import withModel from "../images/with_model.jpg"
 
 const gridPadding = {
   padding: "10px",
@@ -60,37 +61,22 @@ const ModelLink = styled.a`
 `
 
 const ModelImage = styled.img`
-  display: block;
-  height: auto;
-  max-width: 100%;
-  position: fixed;
+  display: flex;
+  width: 100%;
   z-index: 1;
 
-  padding: 0;
-  margin: 0;
-
-  bottom: 12%;
-  left: 7%;
-  transform: scale(1.2);
-
-  @media only screen and (max-width: 414px) {
-    transform: scale(2.9);
-    bottom: 26%;
-    left: 0%;
-  }
-  @media only screen and (max-width: 360px) {
-    bottom: %;
-    left: 0%;
-    transform: scale(2.9);
-  }
+  flex-direction: row;
+  align-content: center;
+  justify-content: center;
+  position: fixed;
+  bottom: 25vh;
 `
 
 const BackgroundImage = styled.div`
-  background: url(${nomodel}) no-repeat center;
-  max-width: 100vh;
+  background: url(${withModel}) no-repeat center;
   height: 100vh;
   object-fit: cover;
-  object-position: top left;
+  object-position: center;
   position: relative;
 `
 
@@ -140,7 +126,12 @@ const SideTab = styled.a`
 const CloseButton = styled.div`
   color: ${pallet.red};
   cursor: pointer;
-  text-align: end;
+  text-align: center;
+  margin-left: 5%;
+`
+
+const Menu = styled.div`
+  padding-top: 10vh;
 `
 export {
   GlobalStyle,
@@ -154,4 +145,5 @@ export {
   SocialMediaLinks,
   SideTab,
   CloseButton,
+  Menu,
 }

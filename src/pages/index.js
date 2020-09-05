@@ -8,6 +8,7 @@ import {
   ModelLink,
   SideTab,
   CloseButton,
+  Menu,
 } from "../style/base"
 import { FaTimesCircle } from "react-icons/fa"
 import modelPic from "../images/model.png"
@@ -38,11 +39,9 @@ const Home = () => {
               &#128064;
             </SideTab>
           </BackgroundImage>
-
-          <ModelImage src={modelPic}></ModelImage>
         </ModelLink>
       ) : (
-        <div>
+        <Menu>
           <CloseButton
             title="Return Home"
             onClick={() => {
@@ -58,7 +57,7 @@ const Home = () => {
             }}
           ></Platform>
           <SocialMedia></SocialMedia>
-        </div>
+        </Menu>
       )}
     </Container>
   )
