@@ -3,6 +3,7 @@ import styled from "styled-components"
 import nomodel from "../images/no_model.jpg"
 import modelPic from "../images/model.png"
 import withModel from "../images/with_model.jpg"
+import frontRight from "../images/Front top right.png"
 
 const gridPadding = {
   padding: "10px",
@@ -61,6 +62,7 @@ const ModelLink = styled.a`
 `
 
 const ModelImage = styled.img`
+  background: url(${frontRight}) no-repeat center;
   display: flex;
   width: 100%;
   z-index: 1;
@@ -105,14 +107,11 @@ const SocialMediaLinks = styled.div`
   }
 `
 const SideTab = styled.a`
-  background: ${pallet.red};
   width: auto;
+  diplay: flex;
 
-  height: auto;
-  border-radius: 10px;
+  height: 50vh;
   position: absolute;
-  top: 50vh;
-  color: white;
   text-align: center;
   font-size: 5em;
   z-index: 2;
@@ -131,7 +130,7 @@ const CloseButton = styled.div`
 `
 
 const Menu = styled.div`
-  padding-top: 10vh;
+  padding-top: 25vh;
 `
 export {
   GlobalStyle,

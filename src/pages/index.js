@@ -15,6 +15,8 @@ import modelPic from "../images/model.png"
 import Platform from "../components/platform"
 import SocialMedia from "../components/socialmedia"
 import Helmet from "react-helmet"
+import frontRight from "../images/Front top right.png"
+import bottomLeft from "../images/Back bottom left.png"
 
 const Home = () => {
   const [toggle, setToggle] = useState({ display: false })
@@ -36,14 +38,14 @@ const Home = () => {
                 toggleDisplay()
               }}
             >
-              &#128064;
+              <img src={bottomLeft}></img>
             </SideTab>
           </BackgroundImage>
         </ModelLink>
       ) : (
         <Menu>
           <CloseButton
-            title="Return Home"
+            title="Close Menu"
             onClick={() => {
               toggleDisplay()
             }}
