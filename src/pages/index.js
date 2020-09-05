@@ -17,6 +17,7 @@ import SocialMedia from "../components/socialmedia"
 import Helmet from "react-helmet"
 import frontRight from "../images/Front top right.png"
 import bottomLeft from "../images/Back bottom left.png"
+import { motion } from "framer-motion"
 
 const Home = () => {
   const [toggle, setToggle] = useState({ display: false })
@@ -25,6 +26,10 @@ const Home = () => {
   const toggleDisplay = () => {
     setToggle({ display: !toggle.display })
   }
+  const variants = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1 },
+  }
 
   return (
     <Container>
@@ -32,14 +37,22 @@ const Home = () => {
       {!display ? (
         <ModelLink>
           <BackgroundImage>
-            <SideTab
-              title="View Menu"
-              onClick={() => {
-                toggleDisplay()
-              }}
+            <motion.div
+              whileHover={{ scale: 0.8 }}
+              whileTap={{ scale: 0.8 }}
+              animate={{ rotate: 360 }}
+              transition={{ duration: 2 }}
             >
-              <img src={bottomLeft}></img>
-            </SideTab>
+              <SideTab
+                title="View Menu"
+                onClick={() => {
+                  toggleDisplay()
+                }}
+              >
+                {" "}
+                <img src={bottomLeft}></img>
+              </SideTab>
+            </motion.div>
           </BackgroundImage>
         </ModelLink>
       ) : (
