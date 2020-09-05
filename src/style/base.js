@@ -77,9 +77,10 @@ const ModelImage = styled.img`
 const BackgroundImage = styled.div`
   background: url(${withModel}) no-repeat center;
   height: 100vh;
+  width: 100%;
   object-fit: cover;
   object-position: center;
-  position: relative;
+  position: fixed;
 `
 
 const PlatformLinks = styled.div`
@@ -117,8 +118,8 @@ const SideTab = styled.a`
   z-index: 2;
   cursor: pointer;
 
-  > :hover {
-    opacity: 0.6;
+  & > img {
+    height: 50vh;
   }
 `
 
