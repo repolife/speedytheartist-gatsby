@@ -32,49 +32,56 @@ const Home = () => {
   }
 
   return (
-    <Container>
-      <GlobalStyle />
-      {!display ? (
-        <ModelLink>
-          <BackgroundImage>
-            <motion.div
-              whileHover={{ scale: 0.8 }}
-              whileTap={{ scale: 0.8 }}
-              animate={{ rotate: 360 }}
-              transition={{ duration: 2 }}
-            >
-              <SideTab
-                title="View Menu"
-                onClick={() => {
-                  toggleDisplay()
-                }}
+    <motion.div
+      initial="hidden"
+      animate="visible"
+      variants={variants}
+      transition={{ duration: 2 }}
+    >
+      <Container>
+        <GlobalStyle />
+        {!display ? (
+          <ModelLink>
+            <BackgroundImage>
+              <motion.div
+                whileHover={{ scale: 0.8 }}
+                whileTap={{ scale: 0.8 }}
+                animate={{ rotate: 360 }}
+                transition={{ duration: 2 }}
               >
-                {" "}
-                <img src={bottomLeft}></img>
-              </SideTab>
-            </motion.div>
-          </BackgroundImage>
-        </ModelLink>
-      ) : (
-        <Menu>
-          <CloseButton
-            title="Close Menu"
-            onClick={() => {
-              toggleDisplay()
-            }}
-            href="#"
-          >
-            <FaTimesCircle size="20px" />
-          </CloseButton>
-          <Platform
-            onClick={() => {
-              toggleDisplay()
-            }}
-          ></Platform>
-          <SocialMedia></SocialMedia>
-        </Menu>
-      )}
-    </Container>
+                <SideTab
+                  title="View Menu"
+                  onClick={() => {
+                    toggleDisplay()
+                  }}
+                >
+                  {" "}
+                  <img src={bottomLeft}></img>
+                </SideTab>
+              </motion.div>
+            </BackgroundImage>
+          </ModelLink>
+        ) : (
+          <Menu>
+            <CloseButton
+              title="Close Menu"
+              onClick={() => {
+                toggleDisplay()
+              }}
+              href="#"
+            >
+              <FaTimesCircle size="20px" />
+            </CloseButton>
+            <Platform
+              onClick={() => {
+                toggleDisplay()
+              }}
+            ></Platform>
+            <SocialMedia></SocialMedia>
+          </Menu>
+        )}
+      </Container>
+    </motion.div>
   )
 }
 
