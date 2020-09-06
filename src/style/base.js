@@ -101,6 +101,9 @@ const SocialMediaLinks = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  justify-content: center;
+
+  align-items: center;
   & > a {
     width: 4em;
     margin: 1em;
@@ -108,11 +111,8 @@ const SocialMediaLinks = styled.div`
   }
 `
 const SideTab = styled.a`
-  width: auto;
-  diplay: flex;
-
-  height: 50vh;
-  position: absolute;
+  display: flex;
+  justify-content: center;
   text-align: center;
   font-size: 5em;
   z-index: 2;
