@@ -1,5 +1,6 @@
 import React from "react"
 import { PlatformLinks } from "../style/base"
+
 const Platform = () => {
   return (
     <PlatformLinks>

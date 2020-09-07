@@ -22,14 +22,14 @@ const SocialMedia = () => {
       >
         <FaYoutubeSquare size={iconSize} />
       </a>
+      <a title="Twitter" href="https://twitter.com/speedytheartist">
+        <FaTwitterSquare size={iconSize} />
+      </a>
       <a
         title="Facebook"
         href="https://www.facebook.com/Speedy-2856732521218860/"
       >
         <FaFacebookSquare size={iconSize} />
-      </a>
-      <a title="Twitter" href="https://twitter.com/speedytheartist">
-        <FaTwitterSquare size={iconSize} />
       </a>
     </SocialMediaLinks>
   )
