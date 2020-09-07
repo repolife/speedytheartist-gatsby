@@ -18,6 +18,7 @@ import Helmet from "react-helmet"
 import frontRight from "../images/Front top right.png"
 import bottomLeft from "../images/Back bottom left.png"
 import { motion } from "framer-motion"
+import Category from "../components/categories"
 
 const Home = () => {
   const [toggle, setToggle] = useState({ display: false })
@@ -72,6 +73,7 @@ const Home = () => {
             >
               <FaTimesCircle size="20px" />
             </CloseButton>
+
             <Platform
               onClick={() => {
                 toggleDisplay()

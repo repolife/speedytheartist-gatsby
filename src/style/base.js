@@ -87,6 +87,8 @@ const PlatformLinks = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-size: 1.5rem;
+
   & > a {
     background: ${pallet.red};
     margin: 1em;
@@ -95,14 +97,14 @@ const PlatformLinks = styled.div`
     text-align: center;
     border-radius: 10px;
     color: white;
+    text-decoration-line: none;
   }
 `
 const SocialMediaLinks = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  justify-content: center;
-
+  font-size: 2rem;
   align-items: center;
   & > a {
     width: 4em;
@@ -126,13 +128,10 @@ const SideTab = styled.a`
 const CloseButton = styled.div`
   color: ${pallet.red};
   cursor: pointer;
-  text-align: center;
-  margin-left: 5%;
+  width: min-content;
 `
 
-const Menu = styled.div`
-  padding-top: 25vh;
-`
+const Menu = styled.div``
 export {
   GlobalStyle,
   Container,
