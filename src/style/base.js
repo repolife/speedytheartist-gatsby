@@ -93,7 +93,7 @@ const PlatformLinks = styled.div`
     background: ${pallet.red};
     margin: 1em;
     padding: 1em;
-    width: 10em;
+    max-width: 50vh;
     text-align: center;
     border-radius: 10px;
     color: white;
@@ -104,7 +104,8 @@ const SocialMediaLinks = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 2rem;
+  flex-wrap: wrap;
+  font-size: 1.5rem;
   align-items: center;
   & > a {
     width: 4em;
