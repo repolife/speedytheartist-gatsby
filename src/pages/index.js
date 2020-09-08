@@ -7,21 +7,19 @@ import {
   ModelImage,
   ModelLink,
   SideTab,
-  CloseButton,
   Menu,
 } from "../style/base"
 import { FaTimesCircle } from "react-icons/fa"
-import modelPic from "../images/model.png"
 import Platform from "../components/platform"
 import SocialMedia from "../components/socialmedia"
 import Helmet from "react-helmet"
-import frontRight from "../images/Front top right.png"
 import bottomLeft from "../images/Back bottom left.png"
 import { motion } from "framer-motion"
-import Category from "../components/categories"
+import { Link } from "gatsby"
 
 const Home = () => {
   const [toggle, setToggle] = useState({ display: false })
+  const [stone, clickStone] = useState({ click: false })
   const { display } = toggle
 
   const toggleDisplay = () => {
@@ -41,47 +39,24 @@ const Home = () => {
     >
       <Container>
         <GlobalStyle />
-        {!display ? (
-          <ModelLink>
-            <BackgroundImage>
-              <motion.div
-                whileHover={{ scale: 0.8 }}
-                whileTap={{ scale: 0.8 }}
-                animate={{ rotate: 360 }}
-                transition={{ duration: 2 }}
-              >
-                <SideTab
-                  title="View Menu"
-                  onClick={() => {
-                    toggleDisplay()
-                  }}
-                >
+
+        <ModelLink>
+          <BackgroundImage>
+            <motion.div
+              whileHover={{ scale: 0.8 }}
+              whileTap={{ scale: 0.8 }}
+              animate={{ rotate: 360 }}
+              transition={{ duration: 2 }}
+            >
+              <Link to="/mylinks" title="My Links">
+                <SideTab title="View Menu">
                   {" "}
                   <img src={bottomLeft}></img>
                 </SideTab>
-              </motion.div>
-            </BackgroundImage>
-          </ModelLink>
-        ) : (
-          <Menu>
-            <CloseButton
-              title="Close Menu"
-              onClick={() => {
-                toggleDisplay()
-              }}
-              href="#"
-            >
-              <FaTimesCircle size="20px" />
-            </CloseButton>
-
-            <Platform
-              onClick={() => {
-                toggleDisplay()
-              }}
-            ></Platform>
-            <SocialMedia></SocialMedia>
-          </Menu>
-        )}
+              </Link>
+            </motion.div>
+          </BackgroundImage>
+        </ModelLink>
       </Container>
     </motion.div>
   )
