@@ -111,7 +111,15 @@ const SocialMediaLinks = styled.div`
     width: 4em;
     margin: 1em;
     color: white;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    align-items: center;
   }
+`
+
+const MusicLink = styled.a`
+  display: flex;
 `
 const SideTab = styled.a`
   display: flex;

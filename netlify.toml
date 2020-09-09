@@ -2,7 +2,6 @@
     from = "/spotify"              
     to = "https://open.spotify.com/album/0Ela0hmFmPSvGfBAo4o2Yu?si=9j8elrT9TmGXkpR4DtXYZQ"
 
-
  [[redirects]]
     from = "/youtubemusic"
     to = "https://music.youtube.com/playlist?list=OLAK5uy_k3h8f_jx9xDReCiC0SRqq_kKkZ5_gTE8A"
@@ -22,7 +21,6 @@
  [[redirects]]
     from = "/napster"
     to = "https://us.napster.com/artist/speedy/album/beyond-504428358"
-
 
  [[redirects]]
     from = "/youtube"
