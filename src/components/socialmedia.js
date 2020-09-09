@@ -32,6 +32,15 @@ const SocialMedia = () => {
       >
         {" "}
         <FaApple size={iconSize} />
+        <div>Music</div>
+      </a>
+
+      <a
+        title="Youtube Music"
+        href="https://www.youtube.com/user/SpeedytheartistTV/videos"
+      >
+        <FaYoutubeSquare size={iconSize} />
+        <div>Music</div>
       </a>
       <a
         title="Amazon Music"
@@ -39,10 +48,7 @@ const SocialMedia = () => {
       >
         {" "}
         <FaAmazon size={iconSize} />
-      </a>
-      <a title="Soundcloud" href="https://soundcloud.com/thisisspeedy">
-        {" "}
-        <FaSoundcloud size={iconSize} />
+        <div>Music</div>
       </a>
       <a
         title="Napster"
@@ -51,6 +57,11 @@ const SocialMedia = () => {
         {" "}
         <FaNapster size={iconSize} />
       </a>
+      <a title="Soundcloud" href="https://soundcloud.com/thisisspeedy">
+        {" "}
+        <FaSoundcloud size={iconSize} />
+      </a>
+
       <a
         title="Youtube"
         href="https://www.youtube.com/user/SpeedytheartistTV/videos"
