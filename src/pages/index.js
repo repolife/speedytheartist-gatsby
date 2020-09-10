@@ -41,22 +41,27 @@ const Home = () => {
         <GlobalStyle />
 
         <ModelLink>
-          <BackgroundImage>
-            <motion.div
-              whileHover={{ scale: 0.8 }}
-              whileTap={{ scale: 0.8 }}
-              animate={{ rotate: 360 }}
-              transition={{ duration: 2 }}
-            >
-              <Link to="/mylinks" title="My Links">
-                <SideTab title="View Menu">
-                  {" "}
-                  <img src={bottomLeft}></img>
-                </SideTab>
-              </Link>
-            </motion.div>
-          </BackgroundImage>
+          <motion.div
+            whileHover={{ opacity: 0.2 }}
+            whileTap={{ opacity: 0.2 }}
+            style={{ opacity: 1 }}
+          >
+            <BackgroundImage></BackgroundImage>
+          </motion.div>
         </ModelLink>
+        <motion.div
+          whileHover={{ scale: 0.8 }}
+          whileTap={{ scale: 0.8 }}
+          animate={{ rotate: 360 }}
+          transition={{ duration: 2 }}
+        >
+          <Link to="/mylinks" title="My Links">
+            <SideTab title="View Menu">
+              {" "}
+              <img src={bottomLeft}></img>
+            </SideTab>
+          </Link>
+        </motion.div>
       </Container>
     </motion.div>
   )

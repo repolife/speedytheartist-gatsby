@@ -3,6 +3,7 @@ import styled from "styled-components"
 import nomodel from "../images/no_model.jpg"
 import modelPic from "../images/model.png"
 import withModel from "../images/with_model.jpg"
+import bigBackground from "../images/bigBackgroundpg.jpg"
 import frontRight from "../images/Front top right.png"
 
 const gridPadding = {
@@ -48,7 +49,7 @@ const Container = styled.div`
 `
 
 const ModelContainer = styled.div`
-  max-width: 100vh;
+  max-width: 100vw;
   height: 100vh;
   object-fit: cover;
   object-position: top left;
@@ -75,12 +76,13 @@ const ModelImage = styled.img`
 `
 
 const BackgroundImage = styled.div`
-  background: url(${withModel}) no-repeat center;
+  background: url(${bigBackground}) no-repeat center;
   height: 100vh;
-  width: 100%;
+  width: 100vw;
   object-fit: cover;
   object-position: center;
   position: fixed;
+  background-size: cover;
 `
 
 const PlatformLinks = styled.div`
