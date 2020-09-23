@@ -5,6 +5,7 @@ import modelPic from "../images/model.png"
 import withModel from "../images/with_model.jpg"
 import bigBackground from "../images/bigBackgroundpg.jpg"
 import frontRight from "../images/Front top right.png"
+import lowResImage from "../images/BigBackgroundpglowres.jpg"
 
 const gridPadding = {
   padding: "10px",
@@ -76,7 +77,7 @@ const ModelImage = styled.img`
 `
 
 const BackgroundImage = styled.div`
-  background: url(${bigBackground}) no-repeat center;
+  background: url(${lowResImage}) no-repeat center;
   height: 100vh;
   width: 100vw;
   object-fit: cover;
@@ -95,11 +96,14 @@ const PlatformLinks = styled.div`
     background: ${pallet.red};
     margin: 1em;
     padding: 1em;
-    max-width: 50vh;
+    min-width: 25vh;
     text-align: center;
     border-radius: 10px;
     color: white;
     text-decoration-line: none;
+    &: hover {
+      box-shadow: 2px 2px 2px 2px #f7f7f73b;
+    }
   }
 `
 const SocialMediaLinks = styled.div`
