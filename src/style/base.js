@@ -97,6 +97,7 @@ const PlatformLinks = styled.div`
     margin: 1em;
     padding: 1em;
     min-width: 25vh;
+    max-width: 25vh;
     text-align: center;
     border-radius: 10px;
     color: white;
