@@ -74,7 +74,7 @@ margin-bottom: 10px;
 display: flex;
 flex-direction: row;
 width: 15vw;
-justify-content: space-around;
+justify-content: space-evenly;
 align-items: flex-start;
 `
 const Link = styled(props => <props.Link {...props} />)`
@@ -93,9 +93,19 @@ top: 10vh;
 overflow:hidden;
 box-shadow: 0 0 40fx rgba(0, 0, 0, 0.1);
 background-image: url(${props => props.img});
-background-size:cover;
-background-blend-mode:screen;
-background-position: center;`
+background-size: cover;
+background-blend-mode :screen;
+background-position: center;
+background-repeat: no-repeat`
+
+
+const Footer = styled.div`
+display: flex;
+flex-direction: row;
+max-width: 15vw;
+justify-content: flex-start;
+margin-top: auto;
+margin-bottom: 5vw`
 
 
 const Social = styled.div`
@@ -117,5 +127,6 @@ export {
   LinkContainer,
   Span,
   Social,
-  Logo
+  Logo,
+  Footer
 }
