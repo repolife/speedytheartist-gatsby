@@ -19,6 +19,21 @@ module.exports = {
         icon: `src/images/model.png`,
       },
     },
+    {
+      resolve: `gatsby-plugin-prefetch-google-fonts`,
+      options: {
+        fonts: [
+          {
+            family: `Oswald`,
+            variants: [`400`, `500`, `600`, `700`],
+          },
+          {
+            family: `Open Sans`,
+            variants: [`400`, `500`, `600`, `700`]
+          },
+        ],
+      },
+    },
     `gatsby-plugin-styled-components`,
   ],
 }

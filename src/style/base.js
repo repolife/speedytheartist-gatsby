@@ -1,3 +1,4 @@
+import React from 'react'; 
 import { createGlobalStyle } from "styled-components"
 import styled from "styled-components"
 import nomodel from "../images/no_model.jpg"
@@ -9,8 +10,6 @@ import lowResImage from "../images/BigBackgroundpglowres.jpg"
 
 
 const GlobalStyle = createGlobalStyle`
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800|Oswald:400,500,600,700')
-
 * {
   box-sizing: border-box;
   text-decoration: none;
@@ -58,13 +57,9 @@ display: flex;
 flex-direction: row;
 max-width: 15vw;
 justify-content: space-around;
-align-items: center;
+align-items: flex-start;
 `
-const Link = styled.a.attrs(props => ({
-  width: `${props.isActive ? '20px' : '10px'}`,
-  marginLeft: `${props.isActive ? '6px 0 0 0' : '6px 0 0 10px'}`
-
-}))`
+const Link = styled(props => <props.Link {...props} />)`
 font-size: 12px;
 color: #fff;
 font-family: oswald;
@@ -84,9 +79,8 @@ background-size:cover;
 background-blend-mode:screen;`
 
 const Social = styled.div`
-position: absolute;
-bottom: 10px;
-left: 10px;`
+margin-left: 2vw;
+`
 
 
 export {
@@ -97,5 +91,6 @@ export {
   Menu,
   Artist,
   LinkContainer,
-  Span
+  Span,
+  Social
 }
