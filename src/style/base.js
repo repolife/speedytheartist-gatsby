@@ -73,7 +73,7 @@ const LinkContainer = styled.div`
 margin-bottom: 10px;
 display: flex;
 flex-direction: row;
-max-width: 15vw;
+width: 15vw;
 justify-content: space-around;
 align-items: flex-start;
 `
@@ -91,10 +91,12 @@ position: absolute;
 left: 15%;
 top: 10vh;
 overflow:hidden;
-box-shadow: 0 0 40px rgba(0, 0, 0, 0.1);
+box-shadow: 0 0 40fx rgba(0, 0, 0, 0.1);
 background-image: url(${props => props.img});
 background-size:cover;
-background-blend-mode:screen;`
+background-blend-mode:screen;
+background-position: center;`
+
 
 const Social = styled.div`
 margin-left: 2vw;
