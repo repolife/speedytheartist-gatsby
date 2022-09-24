@@ -1,19 +1,34 @@
 import React from 'react'; 
 import { createGlobalStyle } from "styled-components"
 import styled from "styled-components"
-import nomodel from "../images/no_model.jpg"
-import modelPic from "../images/model.png"
-import withModel from "../images/with_model.jpg"
-import bigBackground from "../images/bigBackgroundpg.jpg"
-import frontRight from "../images/Front top right.png"
-import lowResImage from "../images/BigBackgroundpglowres.jpg"
 
 
 const GlobalStyle = createGlobalStyle`
+
 * {
-  box-sizing: border-box;
-  text-decoration: none;
-}  
+    margin: 0;
+    padding: 0;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+    
+html {
+    box-sizing: border-box;
+    font-size: 62.5%; 
+    
+    @media only screen and (max-width: $-large) {
+        font-size: 50%;
+    }
+}
+
+body {
+    line-height: 1.6;
+    min-height: 100vh;
+   }     
  `
 const Container = styled.div`
   width: 100vw;

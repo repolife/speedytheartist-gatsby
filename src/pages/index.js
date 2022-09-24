@@ -7,7 +7,7 @@ import { Nav } from "../components/Nav/Nav"
 
 
 
-const Home = () => {
+export const Home = () => {
 
 
   return (
@@ -19,5 +19,11 @@ const Home = () => {
 
   )
 }
+
+ export const Head = () => {
+  return( <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800|Oswald:400,500,600,700'" rel="stylesheet" />
+  )
+}
+
 
 export default Home
