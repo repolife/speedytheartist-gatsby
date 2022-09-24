@@ -2,10 +2,8 @@ import React, { useState } from "react"
 import {
   GlobalStyle,
   Container,
-  Left
-
 } from "../style/base"
-
+import { Nav } from "../components/Nav/Nav"
 
 
 
@@ -16,9 +14,7 @@ const Home = () => {
 
 <Container>
 <GlobalStyle />
-
-  <Left>hi</Left>
-  <h2>hi</h2>
+<Nav/>
 </Container>
 
   )
