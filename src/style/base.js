@@ -44,14 +44,15 @@ const Left = styled.div`
   background: red;
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
   `
 
   const Span =  styled.span`
-  height: 1.2px;
   display: block;
   float: left;
   background: #fff;
-  width: ${props => (props.active ? '20px' : '10px') };
+  height: ${props => (props.active ? '.3vw' : '.1vw') };
+  width: ${props => (props.active ? '3vw' : '1vw') };
   margin: ${props => (props.active ? '6px 0 0 0'
   : '6px 0 0 10px' )};
   `
@@ -59,8 +60,10 @@ const Left = styled.div`
   const LogoContainer = styled.div` 
     margin: 30px 0 0 30px;`
 
-  const Logo = styled.i`
-  url: ${props => props.url}
+  const Logo = styled.img`
+  height: auto%;
+  object-fit: contain; 
+  width: 12vw;
   `
 const Menu = styled.div`
 margin-top: 150px;
@@ -95,6 +98,10 @@ background-blend-mode:screen;`
 
 const Social = styled.div`
 margin-left: 2vw;
+margin-top: 2vw;
+dislay: flex;
+flex-direction: column; 
+flex-wrap: wrap;
 `
 
 
@@ -107,5 +114,6 @@ export {
   Artist,
   LinkContainer,
   Span,
-  Social
+  Social,
+  Logo
 }

@@ -1,17 +1,18 @@
 import React from 'react';
-import {   Span, Left, LogoContainer, Artist, Logo, Menu, LinkContainer  } from "../../style/base"
+import {   Left, LogoContainer, Artist,  Menu, Logo } from "../../style/base"
 import { NavLink } from "./NavLink"
 import { Footer } from '../Footer'
 import artistImage from "../../assets/images/artist.jpg"
+import  logo from '../../assets/images/logo.png'
 
   export const Nav = () => {
 
     return(<Left>
         <LogoContainer>
-           <h2>Logo</h2>
+          <Logo src={logo} alt='logo' />
          
         </LogoContainer>
-        <Artist img={artistImage} />
+        <Artist img={artistImage} alt='speedy the artist' />
            <Menu>
             <NavLink  to="/" name='home' />
             <NavLink  to="/music" name='music' />
