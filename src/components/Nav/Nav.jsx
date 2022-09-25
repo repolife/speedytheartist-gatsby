@@ -4,7 +4,7 @@ import { NavLink } from "./NavLink"
 import { Footer } from '../Footer'
 import artistImage from "../../assets/images/artist.jpg"
 import  logo from '../../assets/images/logo.png'
-
+import { motion } from "framer-motion";
   export const Nav = () => {
 
     return(<Left>
@@ -12,7 +12,13 @@ import  logo from '../../assets/images/logo.png'
           <Logo src={logo} alt='logo' />
          
         </LogoContainer>
-        <Artist img={artistImage} alt='speedy the artist' />
+        <motion.div
+    initial={{ opacity: 0, scale: 1 }}
+    animate={{ opacity: 1, scale: 1 }}
+    transition={{ duration: 0.6 }}
+  >        <Artist img={artistImage} alt='speedy the artist' />
+  </motion.div>
+        
            <Menu>
             <NavLink  to="/" name='home' />
             <NavLink  to="/music" name='music' />
