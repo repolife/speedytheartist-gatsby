@@ -96,7 +96,14 @@ background-image: url(${props => props.img});
 background-size: cover;
 background-blend-mode :screen;
 background-position: center;
-background-repeat: no-repeat`
+background-repeat: no-repeat;
+@media screen and (max-width: 650px) {
+ background-position-x: -25vw;
+}
+`
+
+
+
 
 
 const Footer = styled.div`
