@@ -1,4 +1,4 @@
-import React from 'react'; 
+import React from 'react';
 import { createGlobalStyle } from "styled-components"
 import styled from "styled-components"
 
@@ -47,20 +47,20 @@ const Left = styled.div`
   justify-content: flex-start;
   `
 
-  const Span =  styled.span`
+const Span = styled.span`
   display: block;
   float: left;
   background: #fff;
-  height: ${props => (props.active ? '.3vw' : '.1vw') };
-  width: ${props => (props.active ? '3vw' : '1vw') };
+  height: ${props => (props.active ? '.3vw' : '.1vw')};
+  width: ${props => (props.active ? '3vw' : '1vw')};
   margin: ${props => (props.active ? '6px 0 0 0'
-  : '6px 0 0 10px' )};
+    : '6px 0 0 10px')};
   `
 
-  const LogoContainer = styled.div` 
+const LogoContainer = styled.div` 
     margin: 30px 0 0 30px;`
 
-  const Logo = styled.img`
+const Logo = styled.img`
   height: auto%;
   object-fit: contain; 
   width: 12vw;
@@ -69,14 +69,7 @@ const Menu = styled.div`
 margin-top: 150px;
 width: 30%;`
 
-const LinkContainer = styled.div`
-margin-bottom: 10px;
-display: flex;
-flex-direction: row;
-width: 15vw;
-justify-content: space-evenly;
-align-items: flex-start;
-`
+
 const Link = styled(props => <props.Link {...props} />)`
 font-size: 12px;
 color: #fff;
@@ -131,7 +124,6 @@ export {
   LogoContainer,
   Menu,
   Artist,
-  LinkContainer,
   Span,
   Social,
   Logo,

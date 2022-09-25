@@ -1,52 +1,54 @@
-import React, {useEffect, useState} from 'react';
-import {   Span,  LinkContainer, Link  } from "../../style/base"
-import { Link as GastbyLink} from 'gatsby';
+import React, { useEffect, useState } from 'react';
+import { Span } from "../../style/base"
+import { Link as GastbyLink } from 'gatsby';
 import { useLocation } from "@reach/router"
 import styled from "styled-components"
-import { animate, motion } from 'framer-motion';
+import { LinkContainer } from './LinkContainer';
+import { useAnimationControls, motion, animate } from 'framer-motion';
 
-export const NavLink = ({name, to}) => {
-    const [isActive, setIsActive] = useState(false);
-    const location = useLocation();
-
-
-    const Link = styled(props => <GastbyLink {...props} />)`
+const Link = styled(props => <GastbyLink {...props} />)`
 font-size: 12px;
 color: #fff;
 font-family: "oswald", sans-serif;
-float: right;`
+float: right;
+transform: ${props => (props.isActive ? 'scale(1.5)' : '')};
+`
+
+
+export const NavLink = ({ name, to }) => {
+    const [isActive, setIsActive] = useState(false);
+    const location = useLocation();
+    const controls = useAnimationControls();
 
     useEffect(() => {
-        if(location.pathname !== to) return; 
+        if (location.pathname !== to) return;
         setIsActive(true)
     }, [location, to])
 
-// const navAnimation = {
-    
-// }
-// initial={{ scale: 0 }}
-// animate={{ rotate: 180, scale: 1 }}
-// transition={{
-//   type: "spring",
-//   stiffness: 260,
-//   damping: 20
-// }}
+    const variants = {
+        active: {
 
-    return(
-        <LinkContainer>
-   {isActive ? (     <motion.div
-           whileHover={{ scale: 1.5 }}
-           transition={{ type: "spring", stiffness: 260, damping: 20 }}
-           animate={{rotate: 180, scale: 1}}
-           
+            scale: 1.5, transition:
+                { type: 'spring', duration: 0.5 }
 
-        >
+
+        },
+        inactive: {}
+    }
+
+
+
+    return (
+
+        <LinkContainer isActive={isActive}>
             <Span active={isActive} />
-            </motion.div>) :             <Span active={isActive} />
+            <motion.div
+                whileHover={!isActive ? 'active' : 'inactive'}
+                variants={variants}>
+                <Link isActive={isActive} to={to}>{name.toUpperCase()}</Link>
+            </motion.div>
+        </LinkContainer >
 
-
-   }
-            <Link to={to}>{name.toUpperCase()}</Link></LinkContainer>
 
     )
 }
