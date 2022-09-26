@@ -12,6 +12,8 @@ color: #fff;
 font-family: "oswald", sans-serif;
 float: right;
 transform: ${props => (props.isActive ? 'scale(1.5)' : '')};
+pointer-events: ${props => (props.isActive ? 'none' : '')};
+
 `
 
 
