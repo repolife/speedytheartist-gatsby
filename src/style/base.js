@@ -58,12 +58,14 @@ const Span = styled.span`
   `
 
 const LogoContainer = styled.div` 
-    margin: 30px 0 0 30px;`
+    margin: 2vw 0 0 1vw;`
 
 const Logo = styled.img`
-  height: auto%;
+  height: 7vh;
   object-fit: contain; 
-  width: 12vw;
+  max-width: 20vw;
+
+  width: auto;
   `
 const Menu = styled.div`
 margin-top: 150px;
@@ -90,9 +92,9 @@ background-size: cover;
 background-blend-mode :screen;
 background-position: center;
 background-repeat: no-repeat;
-@media screen and (max-width: 650px) {
- background-position-x: -25vw;
-}
+@media screen and (max-width: 880px) {
+  background-size: 50vw;
+ }
 `
 
 
@@ -105,7 +107,12 @@ flex-direction: row;
 max-width: 15vw;
 justify-content: flex-start;
 margin-top: auto;
-margin-bottom: 5vw`
+margin-bottom: 5vw;
+@media screen and (max-width: 650px) {
+  margin-top: 0; 
+  flex-wrap: wrap; 
+ }
+`
 
 
 

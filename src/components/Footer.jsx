@@ -6,6 +6,8 @@ export const Footer = () => {
 
     return (<FooterContiner>
         <SocialLink name="twitter" props={{ size: 20, color: 'white' }} />
+        <SocialLink name="linktree" props={{ size: 20, color: 'white' }} />
+        <SocialLink name="facebook" props={{ size: 20, color: 'white' }} />
 
     </FooterContiner>)
 

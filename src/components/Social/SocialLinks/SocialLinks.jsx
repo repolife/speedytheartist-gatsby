@@ -6,12 +6,14 @@ import { motion } from "framer-motion"
 
 const Social = styled(motion.div)`
 margin-left: 2vw;
-margin-top: 2vw;
 dislay: flex;
 flex-direction: column; 
 flex-wrap: wrap;
+@media screen and (max-width: 650px) {
+    margin-top: 1em; 
+   }
 `
-export const SocialLink = ({ name, url, props }) => {
+export const SocialLink = ({ name, url, props, animate }) => {
     const nameToLower = name.toLowerCase();
 
     if (nameToLower === 'facebook') {
