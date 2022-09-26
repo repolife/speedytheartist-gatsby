@@ -1,8 +1,4 @@
-/**
- * Configure your Gatsby site with this file.
- *
- * See: https://www.gatsbyjs.org/docs/gatsby-config/
- */
+const path = require('path')
 
 module.exports = {
   /* Your site config here */
@@ -16,10 +12,12 @@ module.exports = {
         background_color: `black`,
         theme_color: `#6B5211`,
         display: `standalone`,
-        icon: `src/images/model.png`,
+        icon: `src/assets/images/logo.png`,
       },
     },
     `gatsby-plugin-styled-components`,
-    `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-image`,
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
   ],
 }
