@@ -105,7 +105,12 @@ flex-direction: row;
 max-width: 15vw;
 justify-content: flex-start;
 margin-top: auto;
-margin-bottom: 5vw`
+margin-bottom: 5vw;
+@media screen and (max-width: 650px) {
+  margin-top: 0; 
+  flex-wrap: wrap; 
+ }
+`
 
 
 
