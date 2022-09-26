@@ -108,13 +108,7 @@ margin-top: auto;
 margin-bottom: 5vw`
 
 
-const Social = styled.div`
-margin-left: 2vw;
-margin-top: 2vw;
-dislay: flex;
-flex-direction: column; 
-flex-wrap: wrap;
-`
+
 
 
 export {
@@ -125,7 +119,6 @@ export {
   Menu,
   Artist,
   Span,
-  Social,
   Logo,
   Footer
 }

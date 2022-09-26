@@ -1,8 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import { SiLinktree, SiBandsintown } from 'react-icons/si'
 import { FaTwitter, FaInstagram, FaYoutube, FaFacebook, FaTiktok } from 'react-icons/fa'
-import { Social } from "../../style/base"
+import styled from "styled-components"
+import { motion } from "framer-motion"
 
+const Social = styled(motion.div)`
+margin-left: 2vw;
+margin-top: 2vw;
+dislay: flex;
+flex-direction: column; 
+flex-wrap: wrap;
+`
 export const SocialLink = ({ name, url, props }) => {
     const nameToLower = name.toLowerCase();
 
@@ -18,7 +26,7 @@ export const SocialLink = ({ name, url, props }) => {
     }
     if (nameToLower === 'bandsintown') {
         return (
-            <Social><SiBandsintown size={20} color='white' /></Social>
+            <Social><SiBandsintown  {...props} /></Social>
         )
     }
     if (nameToLower === 'twitter') {
@@ -29,13 +37,13 @@ export const SocialLink = ({ name, url, props }) => {
 
     if (nameToLower === 'tiktok') {
         return (
-            <Social><FaTiktok size={20} color='white' /></Social>
+            <Social><FaTiktok  {...props} /></Social>
         )
     }
 
     if (nameToLower === 'youtube') {
         return (
-            <Social><FaYoutube size={20} color='white' /></Social>
+            <Social><FaYoutube  {...props} /></Social>
         )
     }
 

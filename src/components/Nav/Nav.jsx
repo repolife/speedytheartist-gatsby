@@ -16,7 +16,7 @@ export const Nav = () => {
     <motion.div
       initial={{ opacity: 0, scale: 1 }}
       animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.6 }}
+      transition={{ duration: 0.8 }}
     >        <Artist img={artistImage} alt='speedy the artist' />
     </motion.div>
 

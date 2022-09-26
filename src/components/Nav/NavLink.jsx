@@ -4,7 +4,7 @@ import { Link as GastbyLink } from 'gatsby';
 import { useLocation } from "@reach/router"
 import styled from "styled-components"
 import { LinkContainer } from './LinkContainer';
-import { useAnimationControls, motion, animate } from 'framer-motion';
+import { motion } from 'framer-motion';
 
 const Link = styled(props => <GastbyLink {...props} />)`
 font-size: 12px;
@@ -20,7 +20,6 @@ pointer-events: ${props => (props.isActive ? 'none' : '')};
 export const NavLink = ({ name, to }) => {
     const [isActive, setIsActive] = useState(false);
     const location = useLocation();
-    const controls = useAnimationControls();
 
     useEffect(() => {
         if (location.pathname !== to) return;

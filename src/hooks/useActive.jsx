@@ -8,13 +8,7 @@ export const useActive = ({ isActive, framer }) => {
     useEffect(() => {
         if (!isActive) return;
         controls.start({
-            transition: {
-                duration: 5
-            },
-            animate: {
-                scale: 10
-            },
-            initial: { scale: 0 }
+            framer
 
         })
 
@@ -22,3 +16,5 @@ export const useActive = ({ isActive, framer }) => {
 
     return { controls }
 }
+
+export default useActive;

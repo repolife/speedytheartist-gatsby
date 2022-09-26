@@ -35,13 +35,15 @@ module.exports = {
       options: {
         alias: {
           "@components": path.resolve(__dirname, './src/componets/'),
-          "@images":  path.resolve(__dirname, './src/assets/images/'),
+          "@src": path.resolve(__dirname, './src/'),
+
+          "@images": path.resolve(__dirname, './src/assets/images/'),
           extensions: [
             "js", "jsx", "png", "jpg"
-      
+
           ],
         },
-       
+
       }
     },
     `gatsby-plugin-styled-components`,

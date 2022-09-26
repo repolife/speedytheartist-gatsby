@@ -14,21 +14,12 @@ align-items: center;
 
 export const LinkContainer = ({ isActive, children }) => {
 
-    const framer = {
-        transition: {
-            duration: 5
-        },
-        animate: {
-            scale: 10
-        },
-        initial: { scale: 0 }
 
-    }
-
-    const { controls } = useActive(isActive)
-
-
-    return (<Container animate={controls}>{children}</Container>)
+    return (<Container
+        initial={{ x: -400 }}
+        animate={{ x: 0 }}
+        transition={{ duration: 0.5 }}
+    >{children}</Container>)
 };
 
 export default LinkContainer;
