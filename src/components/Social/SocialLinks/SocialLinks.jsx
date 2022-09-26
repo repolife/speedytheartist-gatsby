@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { SiLinktree, SiBandsintown } from 'react-icons/si'
-import { FaTwitter, FaInstagram, FaYoutube, FaFacebook, FaTiktok } from 'react-icons/fa'
+import { FaTwitter, FaBandcamp, FaInstagram, FaYoutube, FaFacebook, FaTiktok } from 'react-icons/fa'
 import styled from "styled-components"
 import { motion } from "framer-motion"
 
@@ -21,6 +21,13 @@ export const SocialLink = ({ name, url, props, animate }) => {
             <Social><FaFacebook {...props} /></Social>
         )
     }
+
+    if (nameToLower === 'bandcmp') {
+        return (
+            <Social><FaBandcamp {...props} /></Social>
+        )
+    }
+
     if (nameToLower === 'linktree') {
         return (
             <Social><SiLinktree {...props} /></Social>

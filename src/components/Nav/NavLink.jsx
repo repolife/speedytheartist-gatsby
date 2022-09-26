@@ -44,6 +44,7 @@ export const NavLink = ({ name, to }) => {
         <LinkContainer isActive={isActive}>
             <motion.div
                 whileHover={!isActive ? 'active' : 'inactive'}
+                whileTap={!isActive ? 'active' : 'inactive'}
                 variants={variants}>
                 <Link isActive={isActive} to={to}>{name.toUpperCase()}</Link>
             </motion.div>

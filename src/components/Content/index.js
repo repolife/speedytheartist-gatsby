@@ -13,7 +13,7 @@ height: auto;
 margin-top:10vh;
 display: flex;
 flex-direction: row;
-align-items: baseline;
+align-items: flex-start;
 position: relative;
 right: 2vw;
 `
