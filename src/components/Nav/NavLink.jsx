@@ -42,7 +42,6 @@ export const NavLink = ({ name, to }) => {
     return (
 
         <LinkContainer isActive={isActive}>
-            <Span active={isActive} />
             <motion.div
                 whileHover={!isActive ? 'active' : 'inactive'}
                 variants={variants}>

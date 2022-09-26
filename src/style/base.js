@@ -35,7 +35,7 @@ const Container = styled.div`
   height: 100vh;
   positon: relative;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   `
 const Left = styled.div`
   width: 30vw;
