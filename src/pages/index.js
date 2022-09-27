@@ -1,4 +1,5 @@
-import React, { useState } from "react"
+import React, { useEffect } from "react"
+import axios from "axios";
 import {
   GlobalStyle,
   Container,
@@ -8,6 +9,10 @@ import { Main } from "../components/Content/Main"
 
 
 export const Home = () => {
+
+  useEffect(() => {
+    axios.get('/.netlify/functions/spotify').then(res => console.log(res)).catch(err => console.log(err))
+  }, [])
 
 
   return (

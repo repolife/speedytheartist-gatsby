@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import styled from "styled-components"
 import { useAnimationControls, motion } from 'framer-motion';
 import { useActive } from '../../hooks/useActive';
