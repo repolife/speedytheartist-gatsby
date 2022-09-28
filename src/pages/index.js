@@ -10,8 +10,20 @@ import { Main } from "../components/Content/Main"
 
 export const Home = () => {
 
+  const getRefreshToken = async () => {
+    try {
+      const response = await axios.get(`/.netlify/functions/spotify`);
+      console.log(response)
+
+    } catch (error) {
+
+      console.log(error)
+    }
+
+  }
+
   useEffect(() => {
-    axios.get('/.netlify/functions/spotify').then(res => console.log(res)).catch(err => console.log(err))
+    getRefreshToken()
   }, [])
 
 
