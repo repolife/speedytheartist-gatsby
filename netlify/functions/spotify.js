@@ -12,7 +12,7 @@ exports.handler = async (event, context) => {
 
         const response = await axios.post(token_url, data, {
             headers: {
-                // 'Authorization': `Basic ${auth_token}`,
+                'Authorization': `Basic ${auth_token}`,
                 'Content-Type': 'application/x-www-form-urlencoded'
             }
         })
