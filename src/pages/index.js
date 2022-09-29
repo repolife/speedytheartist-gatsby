@@ -1,70 +1,36 @@
-import React, { useState } from "react"
-import {
-  GlobalStyle,
-  Container,
-  BackgroundImage,
-  ModelContainer,
-  ModelImage,
-  ModelLink,
-  SideTab,
-  Menu,
-} from "../style/base"
-import { FaTimesCircle } from "react-icons/fa"
-import Platform from "../components/platform"
-import SocialMedia from "../components/socialmedia"
-import Helmet from "react-helmet"
-import bottomLeft from "../images/Back bottom left.png"
-import { motion } from "framer-motion"
-import { Link } from "gatsby"
+import React, { } from "react"
+import axios from "axios";
+import { PageWrapper } from "../components/App/PageWrapper";
+import { Main } from "../components/Content/Main"
+import { Maintence } from "../components/App/Maintence/Maintence";
 
-const Home = () => {
-  const [toggle, setToggle] = useState({ display: false })
-  const [stone, clickStone] = useState({ click: false })
-  const { display } = toggle
+export const Home = () => {
 
-  const toggleDisplay = () => {
-    setToggle({ display: !toggle.display })
+  console.log(process.env)
+
+  if (process.env.NODE_ENV === 'production') {
+    return (<Maintence title="Under Maintence" />
+    )
   }
-  const variants = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1 },
-  }
+
 
   return (
-    <motion.div
-      initial="hidden"
-      animate="visible"
-      variants={variants}
-      transition={{ duration: 2 }}
-    >
-      <Container>
-        <GlobalStyle />
 
-        <ModelLink>
-          <motion.div
-            whileHover={{ opacity: 0.2 }}
-            whileTap={{ opacity: 0.2 }}
-            style={{ opacity: 1 }}
-          >
-            <BackgroundImage></BackgroundImage>
-          </motion.div>
-        </ModelLink>
-        <motion.div
-          whileHover={{ scale: 0.8 }}
-          whileTap={{ scale: 0.8 }}
-          animate={{ rotate: 360 }}
-          transition={{ duration: 2 }}
-        >
-          <Link to="/mylinks" title="My Links">
-            <SideTab title="View Menu">
-              {" "}
-              <img src={bottomLeft}></img>
-            </SideTab>
-          </Link>
-        </motion.div>
-      </Container>
-    </motion.div>
+    <PageWrapper>
+
+      <Main title='Speedy The Artist'>
+        <h2>Hi</h2>
+      </Main>
+    </PageWrapper>
+
+
   )
 }
+
+export const Head = () => {
+  return (<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800|Oswald:400,500,600,700'" rel="stylesheet" />
+  )
+}
+
 
 export default Home

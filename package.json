@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-starter-hello-world",
+  "name": "speedy the artist site",
   "private": true,
-  "description": "A simplified bare-bones starter for Gatsby",
+  "description": "Website",
   "version": "0.1.0",
-  "license": "0BSD",
+  "license": "MIT",
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
@@ -11,29 +11,39 @@
     "start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
+    "ntl": "ntl dev",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   },
   "dependencies": {
-    "babel-plugin-styled-components": "^1.11.1",
-    "framer-motion": "^2.6.6",
-    "gatsby": "^2.24.50",
-    "gatsby-plugin-manifest": "^2.4.28",
-    "gatsby-plugin-react-helmet": "^3.3.10",
-    "gatsby-plugin-styled-components": "^3.3.10",
-    "gatsby-source-sharepoint-online": "0.0.2",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
+    "@react-icons/all-files": "^4.1.0",
+    "axios": "^0.27.2",
+    "babel-plugin-styled-components": "^2.0.7",
+    "concurrently": "^7.4.0",
+    "framer-motion": "^7.3.6",
+    "gatsby": "^4.23.1",
+    "gatsby-plugin-alias-imports": "^1.0.5",
+    "gatsby-plugin-image": "^2.23.1",
+    "gatsby-plugin-manifest": "^4.23.1",
+    "gatsby-plugin-netlify-cms": "^6.24.0",
+    "gatsby-plugin-prefetch-google-fonts": "^1.4.3",
+    "gatsby-plugin-sharp": "^4.23.1",
+    "gatsby-plugin-styled-components": "^5.23.0",
+    "gatsby-source-filesystem": "^4.23.0",
+    "gatsby-transformer-sharp": "^4.23.1",
+    "netlify-cms-app": "^2.15.72",
+    "qs": "^6.11.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-helmet": "^6.1.0",
-    "styled-components": "^5.2.0"
+    "react-icons": "^4.4.0",
+    "styled-components": "^5.3.6"
   },
   "devDependencies": {
-    "prettier": "2.1.0"
+    "prettier": "^2.7.1"
   },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-hello-world"
-  },
-  "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+  "overrides": {
+    "react": "^18.2.0",
+    "@types/react": "^18.0.17",
+    "react-dom": "^18.2.0"
   }
 }
