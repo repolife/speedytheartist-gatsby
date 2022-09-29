@@ -1,0 +1,66 @@
+backend:
+    name: git-gateway
+    branch: master # Branch to update (optional; defaults to master)
+
+media_folder: static/img
+public_folder: /assets
+
+collections:
+    - name: "music"
+      label: "music"
+      folder: "content/music"
+      create: true
+      slug: "index"
+      media_folder: ""
+      public_folder: ""
+      path: "{{title}}/index"
+      editor:
+          preview: false
+      fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Release Date", name: "date", widget: "datetime" }
+          - { label: "Artwork", name: "image", widget: "image" }
+          - { label: "Spotify Url", name: "spotify", widget: "string" }
+
+    - name: "bio"
+      label: "bio"
+      folder: "content/bio"
+      create: true
+      slug: "index"
+      media_folder: ""
+      public_folder: ""
+      path: "{{title}}/index"
+      editor:
+          preview: false
+      fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Body", name: "body", widget: "text" }
+    - name: "links"
+      label: "links"
+      folder: "content/links"
+      create: true
+      slug: "index"
+      media_folder: ""
+      public_folder: ""
+      path: "{{title}}/index"
+      editor:
+          preview: false
+      widget: "list"
+      fields:
+          - { label: "Name", name: "name", widget: "string" }
+          - { label: "URL", name: "date", widget: "string" }
+          - {
+                label: "type",
+                name: "image",
+                widget: "select",
+                multiple: true,
+                options:
+                    [
+                        "Social",
+                        "Music",
+                        "Support",
+                        "Tour",
+                        "Video",
+                        default: ["Social"],
+                    ],
+            }

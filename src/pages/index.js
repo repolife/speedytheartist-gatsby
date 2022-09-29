@@ -1,39 +1,19 @@
-import React, { useEffect } from "react"
+import React, { } from "react"
 import axios from "axios";
-import {
-  GlobalStyle,
-  Container,
-} from "../style/base"
-import { Nav } from "../components/Nav/Nav"
+import { PageWrapper } from "../components/App/PageWrapper";
 import { Main } from "../components/Content/Main"
 
-
 export const Home = () => {
-
-  const getRefreshToken = async () => {
-    try {
-      const response = await axios.get(`/.netlify/functions/spotify`);
-      console.log(response)
-
-    } catch (error) {
-
-      console.log(error)
-    }
-
-  }
-
-  useEffect(() => {
-    getRefreshToken()
-  }, [])
 
 
   return (
 
-    <Container>
-      <GlobalStyle />
-      <Nav />
-      <Main />
-    </Container>
+    <PageWrapper>
+
+      <Main title='Speedy The Artist'>
+        <h2>Hi</h2>
+      </Main>
+    </PageWrapper>
 
   )
 }
