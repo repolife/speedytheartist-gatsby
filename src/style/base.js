@@ -3,6 +3,7 @@ import { createGlobalStyle } from "styled-components"
 import styled from "styled-components"
 
 
+const red = 'red'
 const GlobalStyle = createGlobalStyle`
 
 * {
@@ -36,12 +37,13 @@ const Container = styled.div`
   positon: relative;
   display: flex;
   flex-direction: row;
+  background-color: ${props => props.color}
   `
 const Left = styled.div`
   width: 30vw;
   height: 100vh;
   float: left;
-  background: red;
+  background: ${red};
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -127,5 +129,6 @@ export {
   Artist,
   Span,
   Logo,
-  Footer
+  Footer,
+  red
 }
