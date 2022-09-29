@@ -1,17 +1,17 @@
 {
-  "name": "gatsby-starter-hello-world",
+  "name": "speedy the artist site",
   "private": true,
-  "description": "A simplified bare-bones starter for Gatsby",
+  "description": "Website",
   "version": "0.1.0",
-  "license": "0BSD",
+  "license": "MIT",
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
-    "fullstack": "concurrently \"ntl dev\" \"gatsby develop\"",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
     "start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
+    "ntl": "ntl dev",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   },
   "dependencies": {
@@ -40,12 +40,5 @@
   },
   "devDependencies": {
     "prettier": "^2.7.1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-hello-world"
-  },
-  "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
   }
 }
