@@ -42,7 +42,7 @@ collections:
       slug: "index"
       media_folder: ""
       public_folder: ""
-      path: "{{title}}/index"
+      path: "{{type}}/index"
       editor:
           preview: false
       widget: "list"
