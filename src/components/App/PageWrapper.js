@@ -8,7 +8,7 @@ import {
 } from "../../style/base"
 import { MusicContext } from '../../context/MusicContext';
 export const PageWrapper = ({ children }) => {
-    const [token, setToken] = useState(localStorage.getItem('token'))
+    const [token, setToken] = useState()
     const [music, setMusic] = useState([]);
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState(false);
@@ -17,7 +17,8 @@ export const PageWrapper = ({ children }) => {
     const getRefreshToken = async () => {
         try {
             const response = await axios.get(`/.netlify/functions/spotify`);
-            setToken(response.data)
+            localStorage.setItem('token', response.data)
+            setLoading(false)
 
         } catch (error) {
             setError(true)
@@ -26,11 +27,17 @@ export const PageWrapper = ({ children }) => {
     }
 
     useEffect(() => {
-        if (token) return;
+        if (localStorage.getItem('token')) return;
         setLoading(true)
         getRefreshToken()
-        setLoading(false)
-    }, [token])
+    }, [])
+
+    useEffect(() => {
+        if (localStorage.getItem('token')) return;
+        setLoading(true)
+        getRefreshToken()
+    }, [])
+
 
 
     return (

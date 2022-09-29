@@ -48,19 +48,12 @@ collections:
       widget: "list"
       fields:
           - { label: "Name", name: "name", widget: "string" }
-          - { label: "URL", name: "date", widget: "string" }
+          - { label: "URL", name: "url", widget: "string" }
           - {
                 label: "type",
-                name: "image",
+                name: "type",
                 widget: "select",
                 multiple: true,
-                options:
-                    [
-                        "Social",
-                        "Music",
-                        "Support",
-                        "Tour",
-                        "Video",
-                        default: ["Social"],
-                    ],
+                options: ["Social", "Music", "Support", "Tour", "Video"],
+                default: ["Social"],
             }

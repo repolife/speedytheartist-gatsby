@@ -38,6 +38,13 @@ module.exports = {
         path: `${__dirname}/content/links`,
       },
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `bio`,
+        path: `${__dirname}/content/bio`,
+      },
+    },
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,
