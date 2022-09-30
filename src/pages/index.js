@@ -8,7 +8,7 @@ export const Home = () => {
 
   console.log(process.env)
 
-  if (process.env.NODE_ENV === 'production') {
+  if (process.env.INACTIVE === 'true') {
     return (<Maintence title="Under Maintence" />
     )
   }
