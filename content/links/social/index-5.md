@@ -1,5 +1,5 @@
 ---
-name: twitter
-url: https://twitter.com/Speedytheartist
-type: Social
+name: apple
+url: https://music.apple.com/us/artist/speedy-the-artist/1612456930
+type: Music
 ---
