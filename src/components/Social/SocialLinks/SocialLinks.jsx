@@ -85,7 +85,7 @@ export const SocialLink = ({ name, url, props, animate }) => {
 
     if (nameToLower === 'deezer') {
         return (
-            <LinkWrapper url={url} name={name}><SiTidal {...props} /></LinkWrapper>
+            <LinkWrapper url={url} name={name}><SiDeezer {...props} /></LinkWrapper>
         )
     }
 
