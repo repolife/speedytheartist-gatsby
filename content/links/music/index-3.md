@@ -1,5 +1,5 @@
 ---
-name: tidal
-url: https://tidal.com/browse/artist/7741760
+name: deezer
+url: https://www.deezer.com/us/artist/10179316
 type: Music
 ---
