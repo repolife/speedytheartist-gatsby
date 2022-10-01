@@ -11,7 +11,7 @@ const Index = () => {
 
     return (
         <PageWrapper>
-            <Main title="Speedy The Artist">
+            <Main>
                 <Music />
             </Main>
         </PageWrapper>
