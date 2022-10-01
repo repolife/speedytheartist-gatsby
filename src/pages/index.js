@@ -4,9 +4,8 @@ import { PageWrapper } from "../components/App/PageWrapper";
 import { Main } from "../components/Content/Main"
 import { Maintence } from "../components/App/Maintence/Maintence";
 
-export const Home = () => {
+export const Index = () => {
 
-  console.log(process.env)
 
   if (process.env.INACTIVE === 'true') {
     return (<Maintence title="Under Maintence" />
@@ -33,4 +32,4 @@ export const Head = () => {
 }
 
 
-export default Home
+export default Index

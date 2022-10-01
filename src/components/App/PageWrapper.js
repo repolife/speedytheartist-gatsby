@@ -7,17 +7,42 @@ import {
     Container,
 } from "../../style/base"
 import { MusicContext } from '../../context/MusicContext';
+import { useStaticQuery, graphql } from "gatsby"
+
 export const PageWrapper = ({ children }) => {
-    const [token, setToken] = useState()
     const [music, setMusic] = useState([]);
+    const [refreshToken, setREfreshToken] = useState(null);
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState(false);
 
 
+    const data = useStaticQuery(graphql`
+    query {
+      allFile(filter: {sourceInstanceName: {eq: "music"}}) {
+        edges {
+          node {
+            childMarkdownRemark {
+              frontmatter {
+                title
+                url
+                image {
+                  publicURL
+                }
+              }
+            }
+            sourceInstanceName
+          }
+        }
+      }
+    }
+  `)
+
     const getRefreshToken = async () => {
         try {
             const response = await axios.get(`/.netlify/functions/spotify`);
-            localStorage.setItem('token', response.data)
+            const token = response.data.data.access_token;
+            setREfreshToken(token)
+            localStorage.setItem('token', token)
             setLoading(false)
 
         } catch (error) {
@@ -33,15 +58,12 @@ export const PageWrapper = ({ children }) => {
     }, [])
 
     useEffect(() => {
-        if (localStorage.getItem('token')) return;
+        if (refreshToken) return;
         setLoading(true)
-        getRefreshToken()
-    }, [])
-
+    }, [refreshToken])
 
 
     return (
-
         <Container>
             <GlobalStyle />
             <Nav />
@@ -49,6 +71,5 @@ export const PageWrapper = ({ children }) => {
                 {children}
             </MusicContext.Provider>
         </Container>
-
     )
 }
