@@ -1,6 +1,6 @@
-import React, { Children, useEffect, useState } from 'react';
-import styled from "styled-components"
-import { motion } from "framer-motion"
+import React, { Children, useEffect, useState } from 'react'
+import styled from 'styled-components'
+import { motion } from 'framer-motion'
 
 const Social = styled(motion.div)`
 margin-left: 2vw;
@@ -17,14 +17,20 @@ flex-wrap: wrap;
 `
 
 const scale = {
-
-    scale: 1.2
+    scale: 1.2,
 }
 
 export const LinkWrapper = ({ url, name, animate, children }) => {
-    return (<Social
-        whileHover={scale}
-        whileTap={scale}
-    ><a href={url} target="_blank" rel="noopener noreferrer" title={name} >{children}</a></Social>
+    return (
+        <Social whileHover={scale} whileTap={scale}>
+            <a
+                href={url}
+                target="_blank"
+                rel="noopener noreferrer"
+                title={name}
+            >
+                {children}
+            </a>
+        </Social>
     )
-} 
+}

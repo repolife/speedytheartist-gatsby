@@ -1,14 +1,8 @@
 import React from 'react'
-import { PageWrapper } from "../components/App/PageWrapper";
+import { PageWrapper } from '../components/App/PageWrapper'
 
-export const Music = () => {
-
-    return (
-        <PageWrapper>
-
-        </PageWrapper>
-
-    )
+const Music = () => {
+    return <PageWrapper></PageWrapper>
 }
 
-export default Music;
+export default Music
