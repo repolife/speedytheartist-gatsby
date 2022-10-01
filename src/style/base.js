@@ -103,20 +103,6 @@ background-repeat: no-repeat;
 
 
 
-const Footer = styled.div`
-display: flex;
-flex-direction: row;
-max-width: 15vw;
-justify-content: flex-start;
-margin-top: auto;
-margin-bottom: 5vw;
-flex-wrap: wrap;
-@media screen and (max-width: 650px) {
-  margin-top: 0; 
- }
-`
-
-
 
 
 
@@ -129,6 +115,5 @@ export {
   Artist,
   Span,
   Logo,
-  Footer,
   red
 }
