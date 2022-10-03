@@ -22,11 +22,7 @@ export const PageWrapper = ({ children }) => {
                             frontmatter {
                                 title
                                 image {
-                                    childImageSharp {
-                                        fluid(maxWidth: 300) {
-                                            ...GatsbyImageSharpFluid
-                                        }
-                                    }
+                                    publicURL
                                 }
                                 spotify
                             }

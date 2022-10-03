@@ -3,22 +3,32 @@ import styled from 'styled-components'
 const MusicItem = styled.div`
     display: grid;
     text-align: center;
-    grid-gap: 1em;
+    grid-gap: 5px;
     justify-content: center;
+    border: solid;
+    padding: 1em;
+    max-height: 30vh;
+    width: 25vw;
+    @media only screen and (max-width: 950px) {
+        width: 100%;
+    }
 `
 
 const Title = styled.h1`
-    color: ;
+    font-size: 1.5rem;
 `
 
 const ArtWork = styled.img`
-    width: 200px;
-    height: 200px;
+    height: auto;
+    width: 100%;
+    padding: 0 1em 0 1em;
+    height: 20vh;
 `
 
 const Listen = styled.div`
     display: flex;
     justify-content: center;
+    font-size: 1.3rem;
 `
 
 const Link = styled.a`
