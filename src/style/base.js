@@ -94,7 +94,13 @@ const Artist = styled.div`
     background-position: center;
     background-repeat: no-repeat;
 `
-
+const Title = styled.h1`
+    font-family: oswald;
+    font-size: 30px;
+    color: #222;
+    padding-left: 2vw;
+    margin-bottom: 10px;
+`
 export {
     GlobalStyle,
     Container,
@@ -105,4 +111,5 @@ export {
     Span,
     Logo,
     pallet,
+    Title,
 }
