@@ -11,6 +11,9 @@ const Link = styled(({ isActive, ...props }) => <GastbyLink {...props} />)`
     color: #fff;
     font-family: 'oswald', sans-serif;
     float: right;
+    @media screen and (max-width: 650px) {
+        font-size: 1rem;
+    }
     ${props =>
         props.isActive &&
         css`
