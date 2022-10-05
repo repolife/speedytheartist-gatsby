@@ -1,12 +1,13 @@
-import React from 'react';
-import Container from '.';
-import { red } from "../../../style/base"
+import React from 'react'
+import Container from '.'
+import { pallet } from '@style/base'
+
 export const Maintence = ({ title }) => {
-    return (<Container color={red}>
-        <Container.Heading>
-            {title}
-        </Container.Heading>
-    </Container>)
+    return (
+        <Container color={pallet.darkOrange}>
+            <Container.Heading>{title}</Container.Heading>
+        </Container>
+    )
 }
 
 export default Maintence
