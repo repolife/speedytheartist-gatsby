@@ -64,7 +64,8 @@ export const PageWrapper = ({ children }) => {
                         },
                         params: {
                             limit: 50,
-                            offset: '1',
+                            market: 'US',
+                            groups: 'single,album',
                         },
                     }
                 )
@@ -111,7 +112,10 @@ export const PageWrapper = ({ children }) => {
         }
 
         if (refreshToken !== '') {
-            music.map(item =>
+            const sorted = music.sort(
+                (a, b) => new Date(b.release_date) - new Date(a.release_date)
+            )
+            sorted.map(item =>
                 items.push({
                     id: item.id,
                     title: item.name,
@@ -122,10 +126,6 @@ export const PageWrapper = ({ children }) => {
         }
 
         const featured = items[0]
-        console.log('token', refreshToken !== null)
-
-        console.log(items)
-        console.log(featured)
 
         return { items, featured }
     }, [music, refreshToken])

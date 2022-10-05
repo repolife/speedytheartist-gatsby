@@ -2,7 +2,7 @@ import React from 'react'
 import { Left, LogoContainer, Artist, Menu, Logo } from '../../style/base'
 import { NavLink } from './NavLink'
 import { Footer } from '../Footer/Footer'
-import artistImage from '../../assets/images/artist.jpg'
+import artistImage from '../../assets/images/artist.png'
 import logo from '../../assets/images/logo.png'
 import { motion } from 'framer-motion'
 

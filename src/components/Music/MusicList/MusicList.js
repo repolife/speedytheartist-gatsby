@@ -13,6 +13,7 @@ export const MusicList = () => {
             {music &&
                 music.map(item => (
                     <Music
+                        key={item.id}
                         title={item.title}
                         artwork={item.artwork}
                         url={item.url}

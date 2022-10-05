@@ -7,7 +7,7 @@ import { LinkContainer } from './LinkContainer'
 import { motion } from 'framer-motion'
 
 const Link = styled(({ isActive, ...props }) => <GastbyLink {...props} />)`
-    font-size: 12px;
+    font-size: 1.2rem;
     color: #fff;
     font-family: 'oswald', sans-serif;
     float: right;

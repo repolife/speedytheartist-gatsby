@@ -15,15 +15,14 @@ const MusicItem = styled.div`
 `
 
 const Title = styled.h1`
-    font-size: 1.5rem;
+    font-size: 1.2rem;
 `
 
 const ArtWork = styled.img`
     height: auto;
     width: 100%;
-    padding: 0 1em 0 1em;
     height: 20vh;
-    overflow: auto;
+    object-fit: contain;
 `
 
 const Listen = styled.div`

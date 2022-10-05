@@ -1,7 +1,11 @@
 import { createGlobalStyle } from 'styled-components'
 import styled from 'styled-components'
 
-const red = 'red'
+const pallet = {
+    darkOrange: '#852a10',
+    lightPurple: '#883d98',
+    yellow: '#9e9045',
+}
 const GlobalStyle = createGlobalStyle`
 
 * {
@@ -35,13 +39,18 @@ const Container = styled.div`
     positon: relative;
     display: flex;
     flex-direction: row;
-    background-color: ${props => props.color};
+    background-image: linear-gradient(180deg, black, #150a18, black);
 `
 const Left = styled.div`
     width: 30vw;
     height: 100vh;
     float: left;
-    background: ${red};
+    background-image: linear-gradient(
+        to bottom,
+        ${pallet.darkOrange},
+        ${pallet.lightPurple},
+        black
+    );
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -75,7 +84,6 @@ const Menu = styled.div`
 const Artist = styled.div`
     height: 80vh;
     width: 30vw;
-    background: #222;
     position: absolute;
     left: 15%;
     top: 10vh;
@@ -83,12 +91,8 @@ const Artist = styled.div`
     box-shadow: 0 0 40fx rgba(0, 0, 0, 0.1);
     background-image: url(${props => props.img});
     background-size: cover;
-    background-blend-mode: screen;
     background-position: center;
     background-repeat: no-repeat;
-    @media screen and (max-width: 880px) {
-        background-size: 50vw;
-    }
 `
 
 export {
@@ -100,5 +104,5 @@ export {
     Artist,
     Span,
     Logo,
-    red,
+    pallet,
 }
