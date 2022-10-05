@@ -1,30 +1,20 @@
-import React, { useContext } from 'react'
-import { MusicContext } from '@context/MusicContext'
-import MusicItem from '.'
+import React from 'react'
 import { FaSpotify } from 'react-icons/fa'
+import MusicItem from '.'
 
-export const Music = ({ title, image, url }) => {
-    // const { music } = useContext(MusicContext)
-
-    // const defaultNode =
-    //     music?.allFile.edges[0].node.childMarkdownRemark.frontmatter
-
-    // if (!defaultNode) {
-    //     return <h2>loading...</h2>
-    // }
-
+export const Music = ({ title, artwork, url }) => {
     return (
         <MusicItem>
-            {/* <MusicItem.Title>{defaultNode.title.toUpperCase()}</MusicItem.Title>
-            <MusicItem.ArtWork src={defaultNode.image.publicURL} />
+            <MusicItem.Title>{title.toUpperCase()}</MusicItem.Title>
+            <MusicItem.ArtWork src={artwork} />
 
             <MusicItem.Listen>
                 Listen on{' '}
-                <MusicItem.Link href={defaultNode.spotify}>
+                <MusicItem.Link href={url}>
                     {' '}
                     <FaSpotify color="green" />
                 </MusicItem.Link>
-            </MusicItem.Listen> */}
+            </MusicItem.Listen>
         </MusicItem>
     )
 }

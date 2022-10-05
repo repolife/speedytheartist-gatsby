@@ -35,19 +35,19 @@ export const PageWrapper = ({ children }) => {
         }
     `)
 
-    // useEffect(() => {
-    //     const getRefreshToken = async () => {
-    //         try {
-    //             const response = await axios.get(`/.netlify/functions/spotify`)
-    //             const token = await response.data.data.access_token
-    //             return await token
-    //         } catch (error) {
-    //             setError(true)
-    //         }
-    //     }
+    useEffect(() => {
+        const getRefreshToken = async () => {
+            try {
+                const response = await axios.get(`/.netlify/functions/spotify`)
+                const token = await response.data.data.access_token
+                return await token
+            } catch (error) {
+                setError(true)
+            }
+        }
 
-    //     getRefreshToken().then(token => setRefreshToken(token))
-    // }, [])
+        getRefreshToken().then(token => setRefreshToken(token))
+    }, [])
 
     useEffect(() => {
         if (!refreshToken) return
@@ -63,7 +63,7 @@ export const PageWrapper = ({ children }) => {
                             'Content-type': 'application/json',
                         },
                         params: {
-                            limit: 20,
+                            limit: 50,
                             offset: '1',
                         },
                     }
@@ -78,50 +78,72 @@ export const PageWrapper = ({ children }) => {
     }, [refreshToken])
 
     useEffect(() => {
+        if (!refreshToken) return
         if (refreshToken !== '') return
         setMusic(data.allFile.edges)
     }, [refreshToken])
 
     const preparedSpotifyItems = useMemo(() => {
-        if (music.length < 0) return
-        if (refreshToken === '') return
+        if (!refreshToken) return
+
+        if (music.length <= 0) return
 
         const items = []
 
-        console.log(music)
+        if (refreshToken === '') {
+            const {
+                id,
+                childMarkdownRemark: {
+                    frontmatter: {
+                        image: { publicURL },
+                        title,
+                        spotify,
+                    },
+                },
+            } = music[0].node
 
-        music.map(item =>
             items.push({
-                id: item.id,
-                title: item.name,
-                artwork: item.images[0].url,
-                url: item.external_urls.spotify,
+                id,
+                url: spotify,
+                title,
+                artwork: publicURL,
             })
-        )
-    }, [music])
+        }
 
-    const preparedDefaultMusic = useMemo(() => {
-        if (music.length < 0) return
-        if (refreshToken !== '') return
+        if (refreshToken !== '') {
+            music.map(item =>
+                items.push({
+                    id: item.id,
+                    title: item.name,
+                    artwork: item.images[0].url,
+                    url: item.external_urls.spotify,
+                })
+            )
+        }
 
-        const items = []
+        const featured = items[0]
+        console.log('token', refreshToken !== null)
 
-        const { id } = music[0].node
+        console.log(items)
+        console.log(featured)
 
-        items.push({
-            id,
-        })
-
-        console.log('yup', items)
-    }, [music])
+        return { items, featured }
+    }, [music, refreshToken])
 
     return (
         <Container>
             <GlobalStyle />
             <Nav />
-            <MusicContext.Provider value={{ music: preparedSpotifyItems }}>
-                {children}
-            </MusicContext.Provider>
+            {preparedSpotifyItems && (
+                <MusicContext.Provider
+                    value={{
+                        music: preparedSpotifyItems.items,
+                        featured: preparedSpotifyItems.featured,
+                    }}
+                >
+                    {children}
+                </MusicContext.Provider>
+            )}
         </Container>
     )
 }

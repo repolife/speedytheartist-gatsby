@@ -8,7 +8,6 @@ export const Main = ({ title, children }) => {
             animate={{ opacity: 1, scale: 1 }}
         >
             <Content.Text>
-                <hr size={10} />
                 <Content.Title>{title}</Content.Title>
             </Content.Text>
             <Content.Main>{children}</Content.Main>

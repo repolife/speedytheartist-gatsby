@@ -8,6 +8,7 @@ const Content = styled(motion.div)`
     flex-direction: column;
     padding-left: 17vw;
     padding-right: 1em;
+    overflow: hidden;
 `
 const Text = styled.div`
     height: auto;

@@ -2,7 +2,7 @@ import React from 'react'
 import { PageWrapper } from '@components/App/PageWrapper'
 import { Main } from '@components/Content/Main'
 import { Maintence } from '@components/App/Maintence/Maintence'
-import { Music } from '@components/Music/Music'
+import { Featured } from '@components/Music/Featured/Featured'
 
 const Index = () => {
     if (process.env.INACTIVE === 'true') {
@@ -12,7 +12,7 @@ const Index = () => {
     return (
         <PageWrapper>
             <Main>
-                <Music />
+                <Featured />
             </Main>
         </PageWrapper>
     )
