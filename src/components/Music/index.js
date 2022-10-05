@@ -1,11 +1,13 @@
 import styled from 'styled-components'
-
+import { pallet } from '@style/base'
 const MusicItem = styled.div`
     display: grid;
     text-align: center;
     grid-gap: 5px;
     justify-content: center;
-    border: solid;
+    border: solid 1px;
+    border-image: linear-gradient(to right,  ${pallet.darkOrange},  ${pallet.yellow}) 2;
+    bor
     padding: 1em;
     max-height: 30vh;
     width: 25vw;
