@@ -1,21 +1,17 @@
 import React, { useEffect, useState, useMemo } from 'react'
 import axios from 'axios'
-
-import { Nav } from '../Nav/Nav'
-import { GlobalStyle, Container } from '../../style/base'
-import { MusicContext } from '../../context/MusicContext'
+import { Main } from '@components/Content/Main'
+import { Nav } from '../../Nav/Nav'
+import { GlobalStyle, Container } from '../../../style/base'
+import { MusicContext } from '@context/MusicContext'
 import { useStaticQuery, graphql } from 'gatsby'
-
-export const PageWrapper = ({ children }) => {
-    const [music, setMusic] = useState([])
-    const [refreshToken, setRefreshToken] = useState('')
-    const [loading, setLoading] = useState(false)
-    const [error, setError] = useState(null)
-
+import { useQuery } from '@tanstack/react-query'
+import { Loader } from '@components/Loader/Loader'
+export const Layout = ({ children }) => {
     const { GATSBY_SPOTIFY_ARTIST_ID: artistId } = process.env
 
     const data = useStaticQuery(graphql`
-        {
+        query {
             allFile(filter: { sourceInstanceName: { eq: "music" } }) {
                 edges {
                     node {
@@ -35,63 +31,52 @@ export const PageWrapper = ({ children }) => {
         }
     `)
 
-    useEffect(() => {
-        const getRefreshToken = async () => {
-            try {
-                const response = await axios.get(`/.netlify/functions/spotify`)
-                const token = await response.data.data.access_token
-                return await token
-            } catch (error) {
-                setError(true)
-            }
-        }
+    const {
+        isLoading: loadingToken,
+        data: token,
+        isSuccess: tokenSuccess,
+    } = useQuery(['token'], async () => {
+        const response = await axios.get(`/.netlify/functions/spotify`)
+        const token = await response.data?.data?.access_token
+        return await token
+    })
 
-        getRefreshToken().then(token => setRefreshToken(token))
-    }, [])
+    const isToken = token === undefined ? false : true
+    const {
+        data: albums,
+        isLoading: loadingAlbums,
+        isSuccess: albumSuccess,
+    } = useQuery(
+        ['albums', token],
+        async () => {
+            const response = await axios.get(
+                `https://api.spotify.com/v1/artists/${artistId}/albums`,
 
-    useEffect(() => {
-        if (!refreshToken) return
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                        'Content-type': 'application/json',
+                    },
+                    params: {
+                        limit: 50,
+                        market: 'US',
+                        groups: 'single,album',
+                    },
+                }
+            )
+            const items = await response.data?.items
+            return await items
+        },
+        { enabled: !!token }
+    )
 
-        const getSpotfyAlbums = async token => {
-            try {
-                const response = await axios.get(
-                    `https://api.spotify.com/v1/artists/${artistId}/albums`,
-
-                    {
-                        headers: {
-                            Authorization: `Bearer ${token}`,
-                            'Content-type': 'application/json',
-                        },
-                        params: {
-                            limit: 50,
-                            market: 'US',
-                            groups: 'single,album',
-                        },
-                    }
-                )
-                setMusic(response.data.items)
-            } catch (error) {
-                setError(error)
-            }
-        }
-
-        getSpotfyAlbums(refreshToken)
-    }, [refreshToken])
-
-    useEffect(() => {
-        if (!refreshToken) return
-        if (refreshToken !== '') return
-        setMusic(data.allFile.edges)
-    }, [refreshToken])
-
+    console.log(data)
     const preparedSpotifyItems = useMemo(() => {
-        if (!refreshToken) return
-
-        if (music.length <= 0) return
+        if (!data) return
 
         const items = []
 
-        if (refreshToken === '') {
+        if (!albums && data) {
             const {
                 id,
                 childMarkdownRemark: {
@@ -101,7 +86,7 @@ export const PageWrapper = ({ children }) => {
                         spotify,
                     },
                 },
-            } = music[0].node
+            } = data.allFile.edges[0].node
 
             items.push({
                 id,
@@ -111,8 +96,8 @@ export const PageWrapper = ({ children }) => {
             })
         }
 
-        if (refreshToken !== '') {
-            const sorted = music.sort(
+        if (albums) {
+            const sorted = albums.sort(
                 (a, b) => new Date(b.release_date) - new Date(a.release_date)
             )
             sorted.map(item =>
@@ -128,7 +113,7 @@ export const PageWrapper = ({ children }) => {
         const featured = items[0]
 
         return { items, featured }
-    }, [music, refreshToken])
+    }, [albums, data])
 
     return (
         <Container>
@@ -141,9 +126,11 @@ export const PageWrapper = ({ children }) => {
                         featured: preparedSpotifyItems.featured,
                     }}
                 >
-                    {children}
+                    <Main>{!albums && !data ? <Loader /> : children}</Main>
                 </MusicContext.Provider>
             )}
         </Container>
     )
 }
+
+export default Layout

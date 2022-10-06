@@ -15,7 +15,9 @@
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   },
   "dependencies": {
+    "@agney/react-loading": "^0.1.2",
     "@react-icons/all-files": "^4.1.0",
+    "@tanstack/react-query": "^4.10.1",
     "axios": "^0.27.2",
     "babel-plugin-styled-components": "^2.0.7",
     "concurrently": "^7.4.0",

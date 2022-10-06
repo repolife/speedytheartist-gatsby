@@ -19,7 +19,6 @@ exports.handler = async (event, context) => {
                 'Content-Type': 'application/x-www-form-urlencoded',
             },
         })
-        console.log(response)
         return {
             statusCode: 200,
             body: JSON.stringify({ data: response.data }),

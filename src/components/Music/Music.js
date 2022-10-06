@@ -4,16 +4,14 @@ import MusicItem from '.'
 
 export const Music = ({ title, artwork, url }) => {
     return (
-        <MusicItem>
+        <MusicItem href={url} target="_blank" rel="noreferrer noopener">
             <MusicItem.Title>{title.toUpperCase()}</MusicItem.Title>
             <MusicItem.ArtWork src={artwork} />
 
             <MusicItem.Listen>
-                Listen on{' '}
-                <MusicItem.Link href={url}>
-                    {' '}
-                    <FaSpotify color="green" />
-                </MusicItem.Link>
+                <MusicItem.Blurb>Listen on</MusicItem.Blurb>
+
+                <FaSpotify color="green" />
             </MusicItem.Listen>
         </MusicItem>
     )
