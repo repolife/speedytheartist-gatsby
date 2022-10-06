@@ -1,69 +1,137 @@
-import React, { useEffect, useState } from 'react';
-import { SiLinktree, SiBandsintown } from 'react-icons/si'
-import { FaTwitter, FaBandcamp, FaInstagram, FaYoutube, FaFacebook, FaTiktok } from 'react-icons/fa'
-import styled from "styled-components"
-import { motion } from "framer-motion"
+import React from 'react'
+import {
+    SiLinktree,
+    SiBandsintown,
+    SiApplemusic,
+    SiYoutubemusic,
+    SiTidal,
+    SiDeezer,
+} from 'react-icons/si'
+import {
+    FaTwitter,
+    FaBandcamp,
+    FaInstagram,
+    FaYoutube,
+    FaFacebook,
+    FaTiktok,
+    FaSpotify,
+} from 'react-icons/fa'
+import { LinkWrapper } from '../LinkWrapper/LinkWrapper'
 
-const Social = styled(motion.div)`
-margin-left: 2vw;
-dislay: flex;
-flex-direction: column; 
-flex-wrap: wrap;
-@media screen and (max-width: 650px) {
-    margin-top: 1em; 
-   }
-`
 export const SocialLink = ({ name, url, props, animate }) => {
-    const nameToLower = name.toLowerCase();
+    const nameToLower = name.toLowerCase()
 
     if (nameToLower === 'facebook') {
         return (
-            <Social><FaFacebook {...props} /></Social>
+            <LinkWrapper url={url} name={name}>
+                <FaFacebook {...props} />
+            </LinkWrapper>
         )
     }
 
     if (nameToLower === 'bandcmp') {
         return (
-            <Social><FaBandcamp {...props} /></Social>
+            <LinkWrapper url={url} name={name}>
+                <FaBandcamp {...props} />
+            </LinkWrapper>
         )
     }
 
     if (nameToLower === 'linktree') {
         return (
-            <Social><SiLinktree {...props} /></Social>
+            <LinkWrapper url={url} name={name}>
+                <SiLinktree {...props} />
+            </LinkWrapper>
         )
     }
     if (nameToLower === 'bandsintown') {
         return (
-            <Social><SiBandsintown  {...props} /></Social>
+            <LinkWrapper url={url} name={name}>
+                <SiBandsintown {...props} />
+            </LinkWrapper>
         )
     }
     if (nameToLower === 'twitter') {
         return (
-            <Social><FaTwitter {...props} /></Social>
+            <LinkWrapper url={url} name={name}>
+                <FaTwitter {...props} />
+            </LinkWrapper>
         )
     }
 
     if (nameToLower === 'tiktok') {
         return (
-            <Social><FaTiktok  {...props} /></Social>
+            <LinkWrapper url={url} name={name}>
+                <FaTiktok {...props} />
+            </LinkWrapper>
         )
     }
 
     if (nameToLower === 'youtube') {
         return (
-            <Social><FaYoutube  {...props} /></Social>
+            <LinkWrapper url={url} name={name}>
+                <FaYoutube {...props} />
+            </LinkWrapper>
         )
     }
-
 
     if (nameToLower === 'instagram') {
         return (
-            <Social><FaInstagram size={20} color='white' /></Social>
+            <LinkWrapper url={url} name={name}>
+                <FaInstagram {...props} />
+            </LinkWrapper>
         )
     }
 
-    return (null)
+    if (nameToLower === 'youtube') {
+        return (
+            <LinkWrapper url={url} name={name}>
+                <FaYoutube {...props} />
+            </LinkWrapper>
+        )
+    }
+
+    if (nameToLower === 'spotify') {
+        return (
+            <LinkWrapper url={url} name={name}>
+                <FaSpotify {...props} />
+            </LinkWrapper>
+        )
+    }
+
+    if (nameToLower === 'apple') {
+        return (
+            <LinkWrapper url={url} name={name}>
+                <SiApplemusic {...props} />
+            </LinkWrapper>
+        )
+    }
+
+    if (nameToLower === 'ytmusic') {
+        return (
+            <LinkWrapper url={url} name={name}>
+                <SiYoutubemusic {...props} />
+            </LinkWrapper>
+        )
+    }
+
+    if (nameToLower === 'tidal') {
+        return (
+            <LinkWrapper url={url} name={name}>
+                <SiTidal {...props} />
+            </LinkWrapper>
+        )
+    }
+
+    if (nameToLower === 'deezer') {
+        return (
+            <LinkWrapper url={url} name={name}>
+                <SiDeezer {...props} />
+            </LinkWrapper>
+        )
+    }
+
+    return null
 }
 
-export default Social
+export default SocialLink

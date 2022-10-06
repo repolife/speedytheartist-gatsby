@@ -6,53 +6,69 @@ media_folder: static/img
 public_folder: /assets
 
 collections:
-    - name: "music"
-      label: "music"
-      folder: "content/music"
+    - name: 'music'
+      label: 'music'
+      folder: 'content/music'
       create: true
-      slug: "index"
-      media_folder: ""
-      public_folder: ""
-      path: "{{title}}/index"
+      slug: 'index'
+      media_folder: ''
+      public_folder: ''
+      path: '{{title}}/index'
       editor:
           preview: false
       fields:
-          - { label: "Title", name: "title", widget: "string" }
-          - { label: "Release Date", name: "date", widget: "datetime" }
-          - { label: "Artwork", name: "image", widget: "image" }
-          - { label: "Spotify Url", name: "spotify", widget: "string" }
+          - { label: 'Title', name: 'title', widget: 'string' }
+          - { label: 'Release Date', name: 'date', widget: 'datetime' }
+          - { label: 'Artwork', name: 'image', widget: 'image' }
+          - { label: 'Spotify Url', name: 'spotify', widget: 'string' }
 
-    - name: "bio"
-      label: "bio"
-      folder: "content/bio"
+    - name: 'bio'
+      label: 'bio'
+      folder: 'content/bio'
       create: true
-      slug: "index"
-      media_folder: ""
-      public_folder: ""
-      path: "{{title}}/index"
+      slug: 'index'
+      media_folder: ''
+      public_folder: ''
+      path: '{{title}}/index'
       editor:
           preview: false
       fields:
-          - { label: "Title", name: "title", widget: "string" }
-          - { label: "Body", name: "body", widget: "text" }
-    - name: "links"
-      label: "links"
-      folder: "content/links"
+          - { label: 'Title', name: 'title', widget: 'string' }
+          - { label: 'Body', name: 'body', widget: 'text' }
+    - name: 'links'
+      label: 'links'
+      folder: 'content/links'
       create: true
-      slug: "index"
-      media_folder: ""
-      public_folder: ""
-      path: "{{type}}/index"
+      slug: 'index'
+      media_folder: ''
+      public_folder: ''
+      path: '{{type}}/index'
       editor:
           preview: false
-      widget: "list"
+      widget: 'list'
       fields:
-          - { label: "Name", name: "name", widget: "string" }
-          - { label: "URL", name: "url", widget: "string" }
+          - { label: 'Name', name: 'name', widget: 'string' }
+          - { label: 'URL', name: 'url', widget: 'string' }
           - {
-                label: "type",
-                name: "type",
-                widget: "select",
-                options: ["Social", "Music", "Support", "Tour", "Video"],
-                default: ["Social"],
+                label: 'type',
+                name: 'type',
+                widget: 'select',
+                options: ['Social', 'Music', 'Support', 'Tour', 'Video'],
+                default: ['Social'],
             }
+    - name: 'news'
+      label: 'news'
+      folder: 'content/news'
+      create: true
+      slug: 'index'
+      media_folder: ''
+      public_folder: ''
+      path: '{{title}}/index'
+      editor:
+          preview: true
+      fields:
+          - { label: 'Title', name: 'title', widget: 'string' }
+          - { label: 'Date', name: 'date', widget: 'datetime' }
+          - { label: 'Image', name: 'image', widget: 'image' }
+          - { label: 'URL', name: 'url', widget: 'string' }
+          - { label: 'Blurb', name: 'blurb', widget: 'text' }

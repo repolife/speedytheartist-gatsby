@@ -1,36 +1,30 @@
-import React, { } from "react"
-import axios from "axios";
-import { PageWrapper } from "../components/App/PageWrapper";
-import { Main } from "../components/Content/Main"
-import { Maintence } from "../components/App/Maintence/Maintence";
+import React from 'react'
+import { RootElement } from '@components/App/RootElement/RootElement'
+import { Main } from '@components/Content/Main'
+import { Maintence } from '@components/App/Maintence/Maintence'
+import { Featured } from '@components/Music/Featured/Featured'
+import { Title } from '@style/base'
 
-export const Home = () => {
+const Index = () => {
+    if (process.env.INACTIVE === 'true') {
+        return <Maintence title="Under Maintence" />
+    }
 
-  console.log(process.env)
-
-  if (process.env.NODE_ENV === 'production') {
-    return (<Maintence title="Under Maintence" />
+    return (
+        <RootElement>
+            <Title>Feature Music</Title>
+            <Featured />
+        </RootElement>
     )
-  }
-
-
-  return (
-
-    <PageWrapper>
-
-      <Main title='Speedy The Artist'>
-        <h2>Hi</h2>
-      </Main>
-    </PageWrapper>
-
-
-  )
 }
 
 export const Head = () => {
-  return (<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800|Oswald:400,500,600,700'" rel="stylesheet" />
-  )
+    return (
+        <link
+            href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800|Oswald:400,500,600,700'"
+            rel="stylesheet"
+        />
+    )
 }
 
-
-export default Home
+export default Index

@@ -1,20 +1,17 @@
-import React, { useEffect } from 'react';
-import { useAnimationControls, motion } from 'framer-motion';
+import React, { useEffect } from 'react'
+import { useAnimationControls, motion } from 'framer-motion'
 
 export const useActive = ({ isActive, framer }) => {
-    const controls = useAnimationControls();
-
+    const controls = useAnimationControls()
 
     useEffect(() => {
-        if (!isActive) return;
+        if (!isActive) return
         controls.start({
-            framer
-
+            framer,
         })
-
     }, [isActive])
 
     return { controls }
 }
 
-export default useActive;
+export default useActive
