@@ -1,13 +1,23 @@
 import React from 'react'
-import { motion } from 'framer-motion'
-
+import { useLoading, Audio } from '@agney/react-loading'
+import styled from 'styled-components'
 export const Loader = () => {
+    const Section = styled.section`
+        display: flex;
+        justify-content: center;
+        position: relative;
+        top: 25vh;
+    `
+    const { containerProps, indicatorEl } = useLoading({
+        loading: true,
+        indicator: <Audio width="80" />,
+    })
+
     return (
-        <motion.div
-            initial={{ opacity: 0, scale: 1 }}
-            animate={{ opacity: 1, scale: 1 }}
-        >
-            >
-        </motion.div>
+        <Section {...containerProps}>
+            {indicatorEl} {/* renders only while loading */}
+        </Section>
     )
 }
+
+export default Loader

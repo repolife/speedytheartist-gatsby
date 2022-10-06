@@ -6,7 +6,7 @@ import { GlobalStyle, Container } from '../../../style/base'
 import { MusicContext } from '@context/MusicContext'
 import { useStaticQuery, graphql } from 'gatsby'
 import { useQuery } from '@tanstack/react-query'
-
+import { Loader } from '@components/Loader/Loader'
 export const Layout = ({ children }) => {
     const { GATSBY_SPOTIFY_ARTIST_ID: artistId } = process.env
 
@@ -126,13 +126,7 @@ export const Layout = ({ children }) => {
                         featured: preparedSpotifyItems.featured,
                     }}
                 >
-                    <Main>
-                        {loadingAlbums && albumSuccess ? (
-                            <h2>Loading</h2>
-                        ) : (
-                            children
-                        )}
-                    </Main>
+                    <Main>{!albums && !data ? <Loader /> : children}</Main>
                 </MusicContext.Provider>
             )}
         </Container>
