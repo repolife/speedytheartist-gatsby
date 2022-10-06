@@ -5,6 +5,7 @@ import { Nav } from '../Nav/Nav'
 import { GlobalStyle, Container } from '../../style/base'
 import { MusicContext } from '../../context/MusicContext'
 import { useStaticQuery, graphql } from 'gatsby'
+import { useQuery } from '@tanstack/react-query'
 
 export const PageWrapper = ({ children }) => {
     const [music, setMusic] = useState([])

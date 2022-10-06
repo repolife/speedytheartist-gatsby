@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "@react-icons/all-files": "^4.1.0",
+    "@tanstack/react-query": "^4.10.1",
     "axios": "^0.27.2",
     "babel-plugin-styled-components": "^2.0.7",
     "concurrently": "^7.4.0",
