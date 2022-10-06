@@ -56,3 +56,20 @@ collections:
                 options: ['Social', 'Music', 'Support', 'Tour', 'Video'],
                 default: ['Social'],
             }
+    - name: 'news'
+      label: 'news'
+      folder: 'content/news'
+      create: true
+      slug: 'index'
+      media_folder: ''
+      public_folder: ''
+      path: '{{title}}/index'
+      editor:
+          preview: true
+      fields:
+          - { label: 'Title', name: 'title', widget: 'string' }
+          - { label: 'Date', name: 'date', widget: 'datetime' }
+          - { label: 'Image', name: 'image', widget: 'image' }
+          - { label: 'URL', name: 'url', widget: 'string' }
+        - { label: 'Blurb', name: 'blurb', widget: 'text' }
+
