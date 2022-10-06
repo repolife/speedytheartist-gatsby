@@ -8,7 +8,6 @@ export const Featured = () => {
         return null
     }
 
-    console.log(featured)
     return (
         <Music
             title={featured.title}
