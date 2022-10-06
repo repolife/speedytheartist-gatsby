@@ -7,11 +7,12 @@ import { MusicContext } from '@context/MusicContext'
 import { useStaticQuery, graphql } from 'gatsby'
 import { useQuery } from '@tanstack/react-query'
 import { Loader } from '@components/Loader/Loader'
+
 export const Layout = ({ children }) => {
     const { GATSBY_SPOTIFY_ARTIST_ID: artistId } = process.env
 
     const data = useStaticQuery(graphql`
-        query {
+        {
             allFile(filter: { sourceInstanceName: { eq: "music" } }) {
                 edges {
                     node {
@@ -70,7 +71,6 @@ export const Layout = ({ children }) => {
         { enabled: !!token }
     )
 
-    console.log(data)
     const preparedSpotifyItems = useMemo(() => {
         if (!data) return
 

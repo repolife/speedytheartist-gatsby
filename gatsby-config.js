@@ -5,6 +5,14 @@ require('dotenv').config({
 })
 
 module.exports = {
+    siteMetadata: {
+        title: 'Speedy The Artist',
+        siteUrl: `https://www.speedytheartist.com`,
+        twitterUsername: '@speedytheartist',
+        image: './src/assets/images/artist.png',
+        description:
+            'Speedy The Artist - Seattle rapper born in Venezuela with a universal sound',
+    },
     plugins: [
         {
             resolve: `gatsby-plugin-manifest`,
