@@ -1,17 +1,16 @@
-import React from 'react'
-import { FaSpotify } from 'react-icons/fa'
+import React, { useState } from 'react'
 import MusicItem from '.'
-
+import { Loader } from '@components/Loader/Loader'
 export const Music = ({ url }) => {
     return (
-        <iframe
-            width="100%"
-            height="150"
+        <MusicItem
             src={`https://embed.odesli.co/?url=${url}&theme=dark`}
             frameborder="0"
+            loading="lazy"
             allowtransparency
             allowfullscreen
-            sandbox="allow-same-origin allow-scripts allow-presentation allow-popups allow-popups-to-escape-sandbox"
+            sandbox="allow-same-origin allow-scripts allow-presentation
+            allow-popups allow-popups-to-escape-sandbox"
         />
     )
 }
