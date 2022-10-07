@@ -11,7 +11,7 @@ module.exports = {
         twitterUsername: '@speedytheartist',
         image: './src/assets/images/artist.png',
         description:
-            'Speedy The Artist - Seattle rapper born in Venezuela with a universal sound',
+            'Speedy The Artist is Seattle hip hop artist born in Venezuela with a universal sound. He makes original rap music that focuses on his life experiences',
     },
     plugins: [
         {

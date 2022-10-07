@@ -2,18 +2,17 @@ import React from 'react'
 import { FaSpotify } from 'react-icons/fa'
 import MusicItem from '.'
 
-export const Music = ({ title, artwork, url }) => {
+export const Music = ({ url }) => {
     return (
-        <MusicItem href={url} target="_blank" rel="noreferrer noopener">
-            <MusicItem.Title>{title.toUpperCase()}</MusicItem.Title>
-            <MusicItem.ArtWork src={artwork} />
-
-            <MusicItem.Listen>
-                <MusicItem.Blurb>Listen on</MusicItem.Blurb>
-
-                <FaSpotify color="green" />
-            </MusicItem.Listen>
-        </MusicItem>
+        <iframe
+            width="100%"
+            height="150"
+            src={`https://embed.odesli.co/?url=${url}&theme=dark`}
+            frameborder="0"
+            allowtransparency
+            allowfullscreen
+            sandbox="allow-same-origin allow-scripts allow-presentation allow-popups allow-popups-to-escape-sandbox"
+        />
     )
 }
 
