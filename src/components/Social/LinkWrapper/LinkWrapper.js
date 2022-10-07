@@ -22,7 +22,13 @@ const scale = {
 
 export const LinkWrapper = ({ url, name, animate, children }) => {
     return (
-        <Social whileHover={scale} whileTap={scale}>
+        <Social
+            initial={{ y: 400, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.6 }}
+            whileHover={scale}
+            whileTap={scale}
+        >
             <a
                 href={url}
                 target="_blank"

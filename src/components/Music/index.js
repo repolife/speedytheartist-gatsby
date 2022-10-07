@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { pallet } from '@style/base'
 
-const MusicItem = styled.a`
+const MusicItem = styled.iframe`
     display: grid;
     text-align: center;
     grid-gap: 5px;
@@ -22,33 +22,5 @@ const MusicItem = styled.a`
     color: white;
     text-decoration: none;
 `
-
-const Title = styled.h1`
-    font-size: 1.2rem;
-`
-
-const ArtWork = styled.img`
-    height: auto;
-    width: 100%;
-    height: 20vh;
-    object-fit: contain;
-`
-
-const Listen = styled.div`
-    display: flex;
-    justify-content: center;
-    font-size: 1.3rem;
-    align-items: center;
-    flex-direction: row;
-`
-
-const Blurb = styled.span`
-    margin-right: 3px;
-`
-
-MusicItem.Title = Title
-MusicItem.ArtWork = ArtWork
-MusicItem.Listen = Listen
-MusicItem.Blurb = Blurb
 
 export default MusicItem

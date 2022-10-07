@@ -1,10 +1,13 @@
-import React, { useEffect, useState, useMemo } from 'react'
+import React, { useMemo, useEffect, useState } from 'react'
 import Container from './index'
 import { SocialLink } from '../Social/SocialLinks/SocialLinks'
 import { graphql, useStaticQuery } from 'gatsby'
 
 export const Footer = () => {
-    const data = useStaticQuery(graphql`
+    const [pathname, setPathname] = useState(null)
+    const {
+        allFile: { edges },
+    } = useStaticQuery(graphql`
         query {
             allFile(
                 filter: { sourceInstanceName: { eq: "links" } }
@@ -28,11 +31,39 @@ export const Footer = () => {
             }
         }
     `)
+    useEffect(() => {
+        if (typeof window === undefined) return
+        setPathname(window.location.pathname.toLocaleLowerCase())
+    })
+
+    const paths = {
+        '/': 'Social',
+        '/music': 'Music',
+        '/support': 'Support',
+        '/tour': 'Tour',
+        '/video': 'Video',
+    }
+
+    const filteredIcons = useMemo(() => {
+        if (!pathname) return
+        if (!edges) return
+
+        console.log(edges)
+
+        const filtered = edges.filter(
+            edge =>
+                edge.node.childrenMarkdownRemark[0].frontmatter.type ===
+                paths[pathname]
+        )
+        return filtered || edges
+    }, [pathname, edges])
+
+    const icons = filteredIcons ?? edges
 
     return (
         <Container>
-            {data &&
-                data.allFile.edges.map(edge => {
+            {icons &&
+                icons.map(edge => {
                     const { name, url } =
                         edge.node.childrenMarkdownRemark[0].frontmatter
                     return (

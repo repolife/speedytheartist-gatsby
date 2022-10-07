@@ -6,7 +6,9 @@ import styled, { css } from 'styled-components'
 import { LinkContainer } from './LinkContainer'
 import { motion } from 'framer-motion'
 
-const Link = styled(({ isActive, ...props }) => <GastbyLink {...props} />)`
+const Link = styled(({ isActive, ...props }) => (
+    <GastbyLink activeStyle={{ transform: 'scale(1.5)' }} {...props} />
+))`
     font-size: 1.2rem;
     color: #fff;
     font-family: 'oswald', sans-serif;
@@ -14,21 +16,10 @@ const Link = styled(({ isActive, ...props }) => <GastbyLink {...props} />)`
     @media screen and (max-width: 650px) {
         font-size: 1rem;
     }
-    ${props =>
-        props.isActive &&
-        css`
-            transform: scale(1.5);
-            pointer-events: none;
-        `};
 `
 export const NavLink = ({ name, to }) => {
     const [isActive, setIsActive] = useState(false)
     const location = useLocation()
-
-    useEffect(() => {
-        if (location.pathname !== to) return
-        setIsActive(true)
-    }, [location, to])
 
     const variants = {
         active: {
