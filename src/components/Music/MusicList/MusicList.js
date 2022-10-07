@@ -11,15 +11,7 @@ export const MusicList = () => {
 
     return (
         <Container>
-            {music &&
-                music.map(item => (
-                    <Music
-                        key={item.id}
-                        title={item.title}
-                        artwork={item.artwork}
-                        url={item.url}
-                    />
-                ))}
+            {music && music.map(item => <Music key={item.id} url={item.url} />)}
         </Container>
     )
 }
