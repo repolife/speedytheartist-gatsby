@@ -5,6 +5,7 @@ import { Maintence } from '@components/App/Maintence/Maintence'
 import { Featured } from '@components/Music/Featured/Featured'
 import { Title } from '@style/base'
 import { SEO } from '@components/SEO/SEO'
+import { NewsItem } from '@components/News/NewsItem/NewsItem'
 
 const Index = () => {
     if (process.env.INACTIVE === 'true') {
@@ -13,8 +14,10 @@ const Index = () => {
 
     return (
         <RootElement>
-            <Title>Feature Music</Title>
+            <Title>Featured Music</Title>
             <Featured />
+            <Title>Latest News</Title>
+            <NewsItem />
         </RootElement>
     )
 }

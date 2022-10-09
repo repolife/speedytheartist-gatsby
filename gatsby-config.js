@@ -26,6 +26,7 @@ module.exports = {
                 icon: `src/assets/images/logo.png`,
             },
         },
+
         {
             resolve: `gatsby-source-filesystem`,
             options: {
@@ -67,6 +68,13 @@ module.exports = {
                 lang: 'en',
             },
         },
+        `gatsby-plugin-styled-components`,
+        `gatsby-plugin-image`,
+        `gatsby-plugin-sharp`,
+        `gatsby-transformer-sharp`,
+        `gatsby-plugin-netlify-cms`,
+        `gatsby-transformer-remark`,
+        `gatsby-remark-relative-images-v2`,
         {
             resolve: `gatsby-plugin-alias-imports`,
             options: {
@@ -78,14 +86,9 @@ module.exports = {
                     '@hooks': path.resolve(__dirname, 'src/hooks'),
                     '@context': path.resolve(__dirname, 'src/context'),
                 },
+
                 extensions: [],
             },
         },
-        `gatsby-plugin-styled-components`,
-        `gatsby-plugin-image`,
-        `gatsby-plugin-sharp`,
-        `gatsby-transformer-sharp`,
-        `gatsby-plugin-netlify-cms`,
-        `gatsby-transformer-remark`,
     ],
 }

@@ -99,7 +99,8 @@ const Title = styled.h1`
     font-size: 30px;
     color: #222;
     padding-left: 2vw;
-    margin-bottom: 10px;
+    margin: 10px 0 10px 0;
+    font-size: 2.5rem;
 `
 export {
     GlobalStyle,
