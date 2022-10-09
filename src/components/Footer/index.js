@@ -10,6 +10,7 @@ const Contaner = styled.div`
     margin-bottom: 5vw;
     flex-wrap: wrap;
     @media screen and (max-width: 650px) {
+        margin-top: 0;
         justify-content: center;
     }
 `
