@@ -11,8 +11,8 @@ collections:
       folder: 'content/music'
       create: true
       slug: 'index'
-      media_folder: ''
-      public_folder: ''
+      media_folder: '/static/images/uploads'
+      public_folder: '/images/uploads'
       path: '{{title}}/index'
       editor:
           preview: false
@@ -61,8 +61,8 @@ collections:
       folder: 'content/news'
       create: true
       slug: 'index'
-      media_folder: ''
-      public_folder: ''
+      media_folder: '/static/images/uploads'
+      public_folder: '/images/uploads'
       path: '{{title}}/index'
       editor:
           preview: true
