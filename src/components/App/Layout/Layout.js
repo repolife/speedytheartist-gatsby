@@ -128,7 +128,7 @@ export const Layout = ({ children }) => {
         <Container>
             <GlobalStyle />
             <Nav />
-            {preparedSpotifyItems && (
+            {/* {preparedSpotifyItems && (
                 <MusicContext.Provider
                     value={{
                         music: preparedSpotifyItems.items,
@@ -138,7 +138,7 @@ export const Layout = ({ children }) => {
                 >
                     <Main>{!albums && !data ? <Loader /> : children}</Main>
                 </MusicContext.Provider>
-            )}
+            )} */}
         </Container>
     )
 }
