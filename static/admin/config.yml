@@ -4,8 +4,6 @@ backend:
 
 local_backend: true
 
-site_url: https://speedytheartist.com
-
 media_folder: static/assets
 public_folder: /assets
 
