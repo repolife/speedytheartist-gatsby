@@ -1,9 +1,12 @@
 backend:
     name: git-gateway
-    branch: master # Branch to update (optional; defaults to master)
+    branch: master, develop # Branch to update (optional; defaults to master)
 
-media_folder: static/img
-public_folder: /assets
+local_backend: true
+
+site_url: https://speedytheartist.com
+media_folder: static/media
+public_folder: /media
 
 collections:
     - name: 'music'
@@ -11,9 +14,9 @@ collections:
       folder: 'content/music'
       create: true
       slug: 'index'
-      media_folder: '/static/images/uploads'
-      public_folder: '/images/uploads'
       path: '{{title}}/index'
+      media_folder: ''
+      public_folder: ''
       editor:
           preview: false
       fields:
@@ -27,8 +30,6 @@ collections:
       folder: 'content/bio'
       create: true
       slug: 'index'
-      media_folder: ''
-      public_folder: ''
       path: '{{title}}/index'
       editor:
           preview: false
@@ -40,8 +41,6 @@ collections:
       folder: 'content/links'
       create: true
       slug: 'index'
-      media_folder: ''
-      public_folder: ''
       path: '{{type}}/index'
       editor:
           preview: false
@@ -61,9 +60,9 @@ collections:
       folder: 'content/news'
       create: true
       slug: 'index'
-      media_folder: '/static/images/uploads'
-      public_folder: '/images/uploads'
       path: '{{title}}/index'
+      media_folder: ''
+      public_folder: ''
       editor:
           preview: true
       fields:
