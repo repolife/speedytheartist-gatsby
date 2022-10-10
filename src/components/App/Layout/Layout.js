@@ -13,17 +13,31 @@ export const Layout = ({ children }) => {
 
     const data = useStaticQuery(graphql`
         {
-            allFile(filter: { sourceInstanceName: { eq: "music" } }) {
+            music: allFile(filter: { sourceInstanceName: { eq: "music" } }) {
                 edges {
                     node {
                         id
                         childMarkdownRemark {
                             frontmatter {
                                 title
-                                image {
-                                    publicURL
-                                }
+                                image
                                 spotify
+                            }
+                        }
+                    }
+                }
+            }
+            news: allFile(filter: { sourceInstanceName: { eq: "news" } }) {
+                edges {
+                    node {
+                        id
+                        childMarkdownRemark {
+                            frontmatter {
+                                title
+                                url
+                                blurb
+                                date
+                                image
                             }
                         }
                     }
@@ -42,7 +56,6 @@ export const Layout = ({ children }) => {
         return await token
     })
 
-    const isToken = token === undefined ? false : true
     const {
         data: albums,
         isLoading: loadingAlbums,
@@ -80,19 +93,15 @@ export const Layout = ({ children }) => {
             const {
                 id,
                 childMarkdownRemark: {
-                    frontmatter: {
-                        image: { publicURL },
-                        title,
-                        spotify,
-                    },
+                    frontmatter: { image, title, spotify },
                 },
-            } = data.allFile.edges[0].node
+            } = data.music.edges[0].node
 
             items.push({
                 id,
                 url: spotify,
                 title,
-                artwork: publicURL,
+                artwork: image,
             })
         }
 
@@ -124,6 +133,7 @@ export const Layout = ({ children }) => {
                     value={{
                         music: preparedSpotifyItems.items,
                         featured: preparedSpotifyItems.featured,
+                        news: data.news,
                     }}
                 >
                     <Main>{!albums && !data ? <Loader /> : children}</Main>
