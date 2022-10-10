@@ -14,10 +14,10 @@ const Index = () => {
 
     return (
         <RootElement>
-            <Title>Featured Music</Title>
+            {/* <Title>Featured Music</Title>
             <Featured />
             <Title>Latest News</Title>
-            <NewsItem />
+            <NewsItem /> */}
         </RootElement>
     )
 }
