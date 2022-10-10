@@ -5,8 +5,9 @@ backend:
 local_backend: true
 
 site_url: https://speedytheartist.com
-media_folder: static/media
-public_folder: /media
+
+media_folder: static/assets
+public_folder: /assets
 
 collections:
     - name: 'music'

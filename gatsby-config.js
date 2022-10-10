@@ -26,6 +26,13 @@ module.exports = {
                 icon: `src/assets/images/logo.png`,
             },
         },
+        {
+            resolve: `gatsby-source-filesystem`,
+            options: {
+                name: `images`,
+                path: `${__dirname}/static/assets/images/uploads`,
+            },
+        },
 
         {
             resolve: `gatsby-source-filesystem`,
