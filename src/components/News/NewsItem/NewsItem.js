@@ -8,11 +8,9 @@ export const NewsItem = () => {
 
     const {
         childMarkdownRemark: {
-            frontmatter: { image, blurb, url, title },
+            frontmatter: { blurb, url, title },
         },
     } = news.edges[0].node
-
-    console.log(image)
 
     return <News></News>
 }
