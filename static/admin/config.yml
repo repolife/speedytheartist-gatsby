@@ -4,8 +4,8 @@ backend:
 
 local_backend: true
 
-media_folder: static/assets
-public_folder: /assets
+media_folder: static/assets/images
+public_folder: /assets/images
 
 collections:
     - name: 'music'
@@ -58,7 +58,6 @@ collections:
       create: true
       slug: 'index'
       path: '{{title}}/index'
-      media_folder: ''
       editor:
           preview: true
       fields:

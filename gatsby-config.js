@@ -55,13 +55,7 @@ module.exports = {
                 path: `${__dirname}/content/bio`,
             },
         },
-        {
-            resolve: `gatsby-source-filesystem`,
-            options: {
-                name: `news`,
-                path: `${__dirname}/content/news`,
-            },
-        },
+
         {
             resolve: 'gatsby-plugin-html-attributes',
             options: {
@@ -73,7 +67,20 @@ module.exports = {
         `gatsby-plugin-sharp`,
         `gatsby-transformer-sharp`,
         `gatsby-plugin-netlify-cms`,
-        `gatsby-transformer-remark`,
+        `gatsby-plugin-netlify-cms-paths`,
+        {
+            resolve: `gatsby-transformer-remark`,
+            options: {
+                plugins: [`gatsby-plugin-netlify-cms-paths`],
+            },
+        },
+        `gatsby-remark-relative-images`,
+        {
+            resolve: `gatsby-remark-images`,
+            options: {
+                maxWidth: 590,
+            },
+        },
         {
             resolve: `gatsby-plugin-alias-imports`,
             options: {
