@@ -12,7 +12,7 @@ const Contaner = styled.div`
     @media screen and (max-width: 650px) {
         margin-top: auto;
         justify-content: center;
-        margin-bottom: 8vh;
+        margin-bottom: 10vh;
     }
 `
 
