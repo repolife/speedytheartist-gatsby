@@ -5,7 +5,12 @@ import { MusicList } from '@components/Music/MusicList/MusicList'
 import { SEO } from '@components/SEO/SEO'
 
 const Music = () => {
-    return <RootElement> {/* <MusicList /> */}</RootElement>
+    return (
+        <RootElement>
+            {' '}
+            <MusicList />{' '}
+        </RootElement>
+    )
 }
 
 export const Head = () => {

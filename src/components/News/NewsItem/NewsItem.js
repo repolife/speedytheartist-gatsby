@@ -7,12 +7,19 @@ export const NewsItem = () => {
     console.log(news)
 
     const {
+        childImageSharp: {
+            fluid: { src },
+        },
         childMarkdownRemark: {
             frontmatter: { blurb, url, title },
         },
     } = news.edges[0].node
 
-    return <News></News>
+    return (
+        <News>
+            <News.Image src={src} />
+        </News>
+    )
 }
 
 export default NewsItem
