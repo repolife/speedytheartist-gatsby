@@ -26,7 +26,13 @@ module.exports = {
                 icon: `src/assets/images/logo.png`,
             },
         },
-
+        {
+            resolve: 'gatsby-source-filesystem',
+            options: {
+                path: `${__dirname}/static/img`,
+                name: 'uploads',
+            },
+        },
         {
             resolve: `gatsby-source-filesystem`,
             options: {
@@ -55,13 +61,7 @@ module.exports = {
                 path: `${__dirname}/content/bio`,
             },
         },
-        {
-            resolve: `gatsby-source-filesystem`,
-            options: {
-                name: `news`,
-                path: `${__dirname}/content/news`,
-            },
-        },
+
         {
             resolve: 'gatsby-plugin-html-attributes',
             options: {
@@ -69,11 +69,21 @@ module.exports = {
             },
         },
         `gatsby-plugin-styled-components`,
-        `gatsby-plugin-image`,
         `gatsby-plugin-sharp`,
         `gatsby-transformer-sharp`,
-        `gatsby-plugin-netlify-cms`,
-        `gatsby-transformer-remark`,
+        {
+            resolve: 'gatsby-transformer-remark',
+            options: {
+                plugins: [
+                    {
+                        resolve: 'gatsby-remark-images',
+                        options: {
+                            maxWidth: 2048,
+                        },
+                    },
+                ],
+            },
+        },
         {
             resolve: `gatsby-plugin-alias-imports`,
             options: {
@@ -87,6 +97,12 @@ module.exports = {
                 },
 
                 extensions: [],
+            },
+        },
+        {
+            resolve: `gatsby-plugin-netlify-cms`,
+            options: {
+                htmlFavicon: `src/assets/images/logo.png`,
             },
         },
     ],

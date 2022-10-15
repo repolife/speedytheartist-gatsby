@@ -1,11 +1,13 @@
 backend:
     name: git-gateway
-    branch: master # Branch to update (optional; defaults to master)
+    branch: master
 
-local_backend: true
+local_backend:
+    url: http://localhost:8082/api/v1
+    allowed_hosts: ['192.168.0.1']
 
-media_folder: static/assets
-public_folder: /assets
+media_folder: static/img
+public_folder: /img
 
 collections:
     - name: 'music'
@@ -13,7 +15,6 @@ collections:
       folder: 'content/music'
       create: true
       slug: 'index'
-      path: '{{title}}/index'
       editor:
           preview: false
       fields:
@@ -27,7 +28,6 @@ collections:
       folder: 'content/bio'
       create: true
       slug: 'index'
-      path: '{{title}}/index'
       editor:
           preview: false
       fields:
@@ -38,7 +38,6 @@ collections:
       folder: 'content/links'
       create: true
       slug: 'index'
-      path: '{{type}}/index'
       editor:
           preview: false
       widget: 'list'
@@ -55,10 +54,10 @@ collections:
     - name: 'news'
       label: 'news'
       folder: 'content/news'
+      media_folder: '/'
+      public_folder: '/'
       create: true
       slug: 'index'
-      path: '{{title}}/index'
-      media_folder: ''
       editor:
           preview: true
       fields:

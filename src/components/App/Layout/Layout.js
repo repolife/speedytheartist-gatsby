@@ -9,7 +9,7 @@ import { useQuery } from '@tanstack/react-query'
 import { Loader } from '@components/Loader/Loader'
 
 export const Layout = ({ children }) => {
-    // const { GATSBY_SPOTIFY_ARTIST_ID: artistId } = process.env
+    const { GATSBY_SPOTIFY_ARTIST_ID: artistId } = process.env
 
     // const data = useStaticQuery(graphql`
     //     {
@@ -17,10 +17,14 @@ export const Layout = ({ children }) => {
     //             edges {
     //                 node {
     //                     id
+    //                     childImageSharp {
+    //                         fluid(maxWidth: 500) {
+    //                             src
+    //                         }
+    //                     }
     //                     childMarkdownRemark {
     //                         frontmatter {
     //                             title
-    //                             image
     //                             spotify
     //                         }
     //                     }
@@ -31,13 +35,17 @@ export const Layout = ({ children }) => {
     //             edges {
     //                 node {
     //                     id
+    //                     childImageSharp {
+    //                         fluid(maxWidth: 500) {
+    //                             src
+    //                         }
+    //                     }
     //                     childMarkdownRemark {
     //                         frontmatter {
     //                             title
     //                             url
     //                             blurb
     //                             date
-    //                             image
     //                         }
     //                     }
     //                 }
@@ -45,7 +53,7 @@ export const Layout = ({ children }) => {
     //         }
     //     }
     // `)
-
+    // console.log(data)
     // const {
     //     isLoading: loadingToken,
     //     data: token,
@@ -90,10 +98,14 @@ export const Layout = ({ children }) => {
     //     const items = []
 
     //     if (!albums && data) {
+    //         console.log('nigga', data.music.edges[0].node)
     //         const {
     //             id,
+    //             childImageSharp: {
+    //                 fluid: { src: image },
+    //             },
     //             childMarkdownRemark: {
-    //                 frontmatter: { image, title, spotify },
+    //                 frontmatter: { title, spotify },
     //             },
     //         } = data.music.edges[0].node
 
@@ -101,7 +113,7 @@ export const Layout = ({ children }) => {
     //             id,
     //             url: spotify,
     //             title,
-    //             artwork: image,
+    //             artwork: image ?? '',
     //         })
     //     }
 

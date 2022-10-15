@@ -1,6 +1,6 @@
 ---
-title: Hell Made Me Stable
-date: 2022-09-29T20:21:09.925Z
+title: Hell Made Me STable
+date: 2022-10-12T13:37:39.160Z
 image: hell-made-me-stable.jpg
-spotify: https://open.spotify.com/track/034GERIUWbtzsY5Zpowqrr?si=a57409eb1dec4ac7
+spotify: https://open.spotify.com/album/1GaB7mKFL0boY0HanJq23X?si=s8FGm6Y6TLixQmFjil0VvA
 ---
