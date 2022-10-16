@@ -8,13 +8,15 @@ exports.createPages = async ({ actions, graphql }) => {
         {
             news: allFile(filter: { sourceInstanceName: { eq: "news" } }) {
                 nodes {
-                    name
-                    id
                     sourceInstanceName
-                    name
-                    relativePath
-                    publicURL
                     childMarkdownRemark {
+                        frontmatter {
+                            title
+                            image
+                            blurb
+                            url
+                        }
+                        id
                         fields {
                             slug
                         }
@@ -31,16 +33,19 @@ exports.createPages = async ({ actions, graphql }) => {
         const news = result.data.news.nodes
 
         news.forEach(node => {
-            const id = node.id
+            const id = node.childMarkdownRemark.id
 
             createPage({
                 path: `/${node.sourceInstanceName}${node.childMarkdownRemark.fields.slug}`,
                 component: path.resolve(
-                    `src/templates/${String(node.sourceInstanceName)}.js`
+                    `src/templates/${String(node.sourceInstanceName)}/${String(
+                        node.sourceInstanceName
+                    )}.js`
                 ),
                 // additional data can be passed via context
                 context: {
                     id,
+                    field: { ...node.childMarkdownRemark.frontmatter },
                 },
             })
         })

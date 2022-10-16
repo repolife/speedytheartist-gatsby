@@ -6,6 +6,34 @@ const pallet = {
     lightPurple: '#883d98',
     yellow: '#9e9045',
 }
+const defaultMargin = '5px'
+
+const LinkStyle = {
+    width: '50%',
+
+    backgroundImage: `linear-gradient(
+        to right,
+        ${pallet.lightPurple} 0%,
+        ${pallet.darkOrange} 51%,
+        ${pallet.yellow} 100%
+    )`,
+    backgroundSize: ' 200% auto',
+    color: 'white',
+
+    margin: `0 auto ${defaultMargin} auto`,
+    height: '2em',
+    transition: '0.5s',
+    fontSize: '1.2rem',
+
+    textTransform: 'uppercase',
+    borderRadius: '5px',
+    cursor: 'pointer',
+
+    '&:hover': {
+        backgroundPosition: 'right top',
+    },
+}
+
 const GlobalStyle = createGlobalStyle`
 
 * {
@@ -102,9 +130,16 @@ const Title = styled.h1`
     margin: 10px 0 10px 0;
     font-size: 2.5rem;
 `
+
+const Button = styled.button`
+    ${LinkStyle}
+`
 export {
     GlobalStyle,
     Container,
+    defaultMargin,
+    LinkStyle,
+    Button,
     Left,
     LogoContainer,
     Menu,

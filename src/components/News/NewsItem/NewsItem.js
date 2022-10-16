@@ -1,9 +1,9 @@
 import React, { useContext } from 'react'
 import News from '../index'
 import MusicContext from '@context/MusicContext'
-import { Link } from 'gatsby'
+import { navigate } from 'gatsby'
 
-export const NewsItem = () => {
+export const NewsItem = ({ item }) => {
     const { news } = useContext(MusicContext)
 
     const {
@@ -14,18 +14,17 @@ export const NewsItem = () => {
         },
     } = news.edges[0].node
 
-    console.log(slug)
     if (!news) {
         return null
     }
     return (
         <News>
-            <News.Title>{title}</News.Title>
-            <News.Image src={image} />
-            <Link to={`/news${slug}`}>
-                {' '}
-                <News.Button>read more</News.Button>
-            </Link>
+            <News.Title>{item?.title ?? title}</News.Title>
+            <News.Image src={item?.image ?? image} />
+
+            <News.Button onClick={() => navigate(`/news${item?.slug ?? slug}`)}>
+                read more
+            </News.Button>
         </News>
     )
 }

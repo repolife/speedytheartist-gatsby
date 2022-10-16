@@ -1,7 +1,6 @@
 import styled from 'styled-components'
-import { pallet } from '@style/base'
+import { pallet, Button, defaultMargin } from '@style/base'
 
-const defaultMargin = '5px'
 const News = styled.div`
     display: grid;
     width: 50vw;
@@ -22,33 +21,6 @@ const Image = styled.img`
     width: 100%;
     height: auto;
     padding: 0 1em 0 1em;
-`
-
-const Button = styled.button`
-    width: 50%;
-    margin: 0 auto;
-
-    background-image: linear-gradient(
-        to right,
-        ${pallet.lightPurple} 0%,
-        ${pallet.darkOrange} 51%,
-        ${pallet.yellow} 100%
-    );
-    background-size: 200% auto;
-    color: white;
-
-    margin: 0 auto ${defaultMargin} auto;
-    height: 2em;
-    transition: 0.5s;
-    font-size: 1.2rem;
-
-    text-transform: uppercase;
-    border-radius: 5px;
-    cursor: pointer;
-
-    &:hover {
-        background-position: right top;
-    }
 `
 
 News.Image = Image

@@ -58,7 +58,6 @@ export const Layout = ({ children }) => {
             }
         }
     `)
-    console.log(data)
     const {
         isLoading: loadingToken,
         data: token,
