@@ -42,6 +42,9 @@ export const Layout = ({ children }) => {
                             }
                         }
                         childMarkdownRemark {
+                            fields {
+                                slug
+                            }
                             frontmatter {
                                 title
                                 url
@@ -55,7 +58,6 @@ export const Layout = ({ children }) => {
             }
         }
     `)
-    console.log(data)
     const {
         isLoading: loadingToken,
         data: token,
