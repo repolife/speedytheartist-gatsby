@@ -42,6 +42,9 @@ export const Layout = ({ children }) => {
                             }
                         }
                         childMarkdownRemark {
+                            fields {
+                                slug
+                            }
                             frontmatter {
                                 title
                                 url
