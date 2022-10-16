@@ -48,8 +48,6 @@ export const Footer = () => {
         if (!pathname) return
         if (!edges) return
 
-        console.log(edges)
-
         const filtered = edges.filter(
             edge =>
                 edge.node.childrenMarkdownRemark[0].frontmatter.type ===

@@ -1,23 +1,30 @@
 import React, { useContext } from 'react'
 import News from '../index'
 import MusicContext from '@context/MusicContext'
+import { navigate } from 'gatsby'
 
-export const NewsItem = () => {
+export const NewsItem = ({ item }) => {
     const { news } = useContext(MusicContext)
-    console.log(news)
 
     const {
-        childImageSharp: {
-            fluid: { src },
-        },
+        childImageSharp,
         childMarkdownRemark: {
-            frontmatter: { blurb, url, title },
+            fields: { slug },
+            frontmatter: { blurb, url, title, image },
         },
     } = news.edges[0].node
 
+    if (!news) {
+        return null
+    }
     return (
         <News>
-            <News.Image src={src} />
+            <News.Title>{item?.title ?? title}</News.Title>
+            <News.Image src={item?.image ?? image} />
+
+            <News.Button onClick={() => navigate(`/news${item?.slug ?? slug}`)}>
+                read more
+            </News.Button>
         </News>
     )
 }
