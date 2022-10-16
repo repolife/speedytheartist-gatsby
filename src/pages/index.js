@@ -12,7 +12,14 @@ const Index = () => {
         return <Maintence title="Under Maintence" />
     }
 
-    return <RootElement></RootElement>
+    return (
+        <RootElement>
+            <Title>Featured Music</Title>
+            <Featured />
+            <Title>Latest News</Title>
+            <NewsItem />
+        </RootElement>
+    )
 }
 
 export const Head = () => {
