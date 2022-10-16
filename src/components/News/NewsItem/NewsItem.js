@@ -1,11 +1,9 @@
 import React, { useContext } from 'react'
 import News from '../index'
 import MusicContext from '@context/MusicContext'
-import { SiNotepadplusplus } from 'react-icons/si'
 
 export const NewsItem = () => {
     const { news } = useContext(MusicContext)
-    console.log(news)
 
     const {
         childImageSharp,
@@ -19,7 +17,9 @@ export const NewsItem = () => {
     }
     return (
         <News>
+            <News.Title>{title}</News.Title>
             <News.Image src={image} />
+            <News.Button>read more</News.Button>
         </News>
     )
 }
