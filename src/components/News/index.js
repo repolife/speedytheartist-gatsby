@@ -17,10 +17,10 @@ const Title = styled.h2`
     font-size: 1.2rem;
 `
 const Image = styled.img`
-    src: ${props => props.src};
-    width: 100%;
+    width: 100% !important;
     height: auto;
     padding: 0 1em 0 1em;
+    src: ${props => props.src};
 `
 
 News.Image = Image
