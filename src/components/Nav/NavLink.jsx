@@ -24,8 +24,6 @@ export const NavLink = ({ name, to }) => {
     const [isActive, setIsActive] = useState(false)
     const location = useLocation()
 
-    console.log(location.pathname)
-
     const variants = {
         active: {
             scale: 1.5,

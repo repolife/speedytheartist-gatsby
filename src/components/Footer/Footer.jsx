@@ -39,7 +39,6 @@ export const Footer = () => {
         setPathname(location.pathname.toLocaleLowerCase())
     })
 
-    console.log()
     const paths = {
         '/': 'Social',
         '/music': 'Music',
@@ -57,8 +56,6 @@ export const Footer = () => {
                 edge.node.childrenMarkdownRemark[0].frontmatter.type ===
                 paths[pathname]
         )
-
-        console.log(filtered)
 
         return filtered.length <= 0 ? edges : filtered
     }, [pathname, edges])
