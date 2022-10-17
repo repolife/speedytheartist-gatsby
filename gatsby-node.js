@@ -4,8 +4,17 @@ const path = require('path')
 exports.createPages = async ({ actions, graphql }) => {
     const { createPage } = actions
 
-    return await graphql(`
+    const results = await graphql(`
         {
+            collections: allFile {
+                distinct(field: sourceInstanceName)
+                edges {
+                    node {
+                        id
+                        sourceInstanceName
+                    }
+                }
+            }
             news: allFile(filter: { sourceInstanceName: { eq: "news" } }) {
                 nodes {
                     sourceInstanceName
@@ -24,31 +33,56 @@ exports.createPages = async ({ actions, graphql }) => {
                 }
             }
         }
-    `).then(result => {
-        if (result.errors) {
-            result.errors.forEach(e => console.error(e.toString()))
-            return Promise.reject(result.errors)
+    `)
+
+    await results.data.news.nodes.forEach(node => {
+        if (node.errors) {
+            node.errors.forEach(e => console.error(e.toString()))
+            return Promise.reject(node.errors)
         }
 
-        const news = result.data.news.nodes
+        const id = node.childMarkdownRemark.id
 
-        news.forEach(node => {
-            const id = node.childMarkdownRemark.id
-
-            createPage({
-                path: `/${node.sourceInstanceName}${node.childMarkdownRemark.fields.slug}`,
-                component: path.resolve(
-                    `src/templates/${String(node.sourceInstanceName)}/${String(
-                        node.sourceInstanceName
-                    )}.js`
-                ),
-                // additional data can be passed via context
-                context: {
-                    id,
-                    field: { ...node.childMarkdownRemark.frontmatter },
-                },
-            })
+        createPage({
+            path: `${node.sourceInstanceName}${node.childMarkdownRemark.fields.slug}`,
+            component: path.resolve(
+                `src/templates/${String(node.sourceInstanceName)}/${String(
+                    node.sourceInstanceName
+                )}.js`
+            ),
+            // additional data can be passed via context
+            context: {
+                id,
+                field: { ...node.childMarkdownRemark.frontmatter },
+            },
         })
+    })
+
+    await results.data.collections.distinct.forEach(collection => {
+        if (collection.errors) {
+            collection.errors.forEach(e => console.error(e.toString()))
+            return Promise.reject(collection.errors)
+        } else {
+            if (collection !== 'news') {
+                return
+            } else {
+                const edges = results.data.collections.edges
+
+                const nodes = edges.filter(
+                    e => e.node.sourceInstanceName === 'news'
+                )
+
+                createPage({
+                    path: `/collections/news`,
+                    component: path.resolve(
+                        `src/templates/news/collections/news.js`
+                    ),
+                    context: {
+                        nodes: { ...nodes },
+                    },
+                })
+            }
+        }
     })
 }
 
