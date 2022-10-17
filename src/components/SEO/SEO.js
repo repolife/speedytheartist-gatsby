@@ -18,6 +18,8 @@ export const SEO = ({ title }) => {
         }
     `)
 
+    const image = `${siteMetadata.siteUrl}${siteMetadata.image}`
+
     return (
         <>
             <title>
@@ -41,7 +43,7 @@ export const SEO = ({ title }) => {
                 property="og:description"
                 content={siteMetadata.description}
             />
-            <meta property="og:image" content={siteMetadata.image} />
+            <meta property="og:image" content={image} />
             {/* <!-- Twitter --> */}
 
             <meta property="twitter:card" content="summary_large_image" />
@@ -51,7 +53,7 @@ export const SEO = ({ title }) => {
                 property="twitter:description"
                 content={siteMetadata.description}
             />
-            <meta property="twitter:image" content={siteMetadata.image} />
+            <meta property="twitter:image" content={image} />
             {/* Google font CDN */}
             <link
                 href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800|Oswald:400,500,600,700'"

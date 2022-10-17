@@ -17,12 +17,23 @@ export const NewsItem = ({ item }) => {
     if (!news) {
         return null
     }
+
     return (
         <News>
-            <News.Title>{item?.title ?? title}</News.Title>
-            <News.Image src={item?.image ?? image} />
+            <News.Title>
+                {item?.childMarkdownRemark.frontmatter.title ?? item?.title}
+            </News.Title>
+            <News.Image
+                src={item?.childMarkdownRemark.frontmatter.image ?? image}
+            />
 
-            <News.Button onClick={() => navigate(`/news${item?.slug ?? slug}`)}>
+            <News.Button
+                onClick={() =>
+                    navigate(
+                        `/news${item?.childMarkdownRemark.fields?.slug ?? slug}`
+                    )
+                }
+            >
                 read more
             </News.Button>
         </News>

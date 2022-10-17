@@ -12,6 +12,16 @@ exports.createPages = async ({ actions, graphql }) => {
                     node {
                         id
                         sourceInstanceName
+                        childMarkdownRemark {
+                            id
+                            fields {
+                                slug
+                            }
+                            frontmatter {
+                                title
+                                image
+                            }
+                        }
                     }
                 }
             }
@@ -58,6 +68,7 @@ exports.createPages = async ({ actions, graphql }) => {
         })
     })
 
+    //News Collection
     await results.data.collections.distinct.forEach(collection => {
         if (collection.errors) {
             collection.errors.forEach(e => console.error(e.toString()))

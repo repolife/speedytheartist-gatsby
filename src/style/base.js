@@ -134,8 +134,17 @@ const Title = styled.h1`
 const Button = styled.button`
     ${LinkStyle}
 `
+const Collection = styled.div`
+    display: grid;
+    grid-auto-columns: auto;
+    height: 80vh;
+    grid-gap: 1em;
+    overflow: overlay;
+    justify-content: center;
+`
 export {
     GlobalStyle,
+    Collection,
     Container,
     defaultMargin,
     LinkStyle,
