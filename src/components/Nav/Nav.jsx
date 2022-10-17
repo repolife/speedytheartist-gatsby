@@ -2,7 +2,7 @@ import React from 'react'
 import { Left, LogoContainer, Artist, Menu, Logo } from '../../style/base'
 import { NavLink } from './NavLink'
 import { Footer } from '../Footer/Footer'
-import artistImage from '../../assets/images/artist.png'
+// import artistImage from '../../assets/images/artist.png'
 import logo from '../../assets/images/logo.png'
 import { motion } from 'framer-motion'
 
@@ -18,13 +18,13 @@ export const Nav = () => {
                 transition={{ duration: 0.8 }}
             >
                 {' '}
-                <Artist img={artistImage} alt="speedy the artist" />
+                <Artist img="/img/artist.png" alt="speedy the artist" />
             </motion.div>
 
             <Menu>
                 <NavLink to="/" name="home" />
                 <NavLink to="/music" name="music" />
-                {/* <NavLink to="/collections/news" name="news" /> */}
+                <NavLink to="/collections/news" name="news" />
             </Menu>
             <Footer />
         </Left>
