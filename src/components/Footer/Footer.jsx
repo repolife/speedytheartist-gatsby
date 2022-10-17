@@ -2,6 +2,7 @@ import React, { useMemo, useEffect, useState } from 'react'
 import Container from './index'
 import { SocialLink } from '../Social/SocialLinks/SocialLinks'
 import { graphql, useStaticQuery } from 'gatsby'
+import { useLocation } from '@reach/router'
 
 export const Footer = () => {
     const [pathname, setPathname] = useState(null)
@@ -31,11 +32,14 @@ export const Footer = () => {
             }
         }
     `)
+
+    const location = useLocation()
     useEffect(() => {
         if (typeof window === undefined) return
-        setPathname(window.location.pathname.toLocaleLowerCase())
+        setPathname(location.pathname.toLocaleLowerCase())
     })
 
+    console.log()
     const paths = {
         '/': 'Social',
         '/music': 'Music',
@@ -53,20 +57,21 @@ export const Footer = () => {
                 edge.node.childrenMarkdownRemark[0].frontmatter.type ===
                 paths[pathname]
         )
-        return filtered || edges
-    }, [pathname, edges])
 
-    const icons = filteredIcons ?? edges
+        console.log(filtered)
+
+        return filtered.length <= 0 ? edges : filtered
+    }, [pathname, edges])
 
     return (
         <Container>
-            {icons &&
-                icons.map(edge => {
+            {filteredIcons &&
+                filteredIcons.map(icon => {
                     const { name, url } =
-                        edge.node.childrenMarkdownRemark[0].frontmatter
+                        icon.node.childrenMarkdownRemark[0].frontmatter
                     return (
                         <SocialLink
-                            key={edge.node.id}
+                            key={icon.node.id}
                             name={name}
                             url={url}
                             props={{ size: 20, color: 'white' }}
