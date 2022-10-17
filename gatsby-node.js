@@ -78,7 +78,7 @@ exports.createPages = async ({ actions, graphql }) => {
                         `src/templates/news/collections/news.js`
                     ),
                     context: {
-                        ...nodes,
+                        nodes: { ...nodes },
                     },
                 })
             }
