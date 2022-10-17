@@ -9,7 +9,7 @@ module.exports = {
         title: 'Speedy The Artist',
         siteUrl: `https://www.speedytheartist.com`,
         twitterUsername: '@speedytheartist',
-        image: '/artist.png',
+        image: '/img/artist.png',
         description:
             'Speedy The Artist is Seattle hip hop artist born in Venezuela with a universal sound. He makes original rap music that focuses on his life experiences',
     },
@@ -33,13 +33,7 @@ module.exports = {
                 name: 'uploads',
             },
         },
-        {
-            resolve: 'gatsby-plugin-copy-files',
-            options: {
-                source: `${__dirname}/src/assets/images`,
-                destination: '/img',
-            },
-        },
+
         {
             resolve: 'gatsby-source-filesystem',
             options: {
