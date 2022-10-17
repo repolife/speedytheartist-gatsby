@@ -73,7 +73,7 @@ exports.createPages = async ({ actions, graphql }) => {
                 )
 
                 createPage({
-                    path: `/collectons/news`,
+                    path: `/collections/news`,
                     component: path.resolve(
                         `src/templates/news/collections/news.js`
                     ),
