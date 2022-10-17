@@ -3,11 +3,12 @@ const path = require('path')
 require('dotenv').config({
     path: `.env.${process.env.NODE_ENV}`,
 })
+const siteUrl = process.env.URL || `https://www.speedytheartist.com`
 
 module.exports = {
     siteMetadata: {
         title: 'Speedy The Artist',
-        siteUrl: `https://www.speedytheartist.com`,
+        siteUrl,
         twitterUsername: '@speedytheartist',
         image: '/img/artist.png',
         description:
@@ -79,6 +80,33 @@ module.exports = {
         `gatsby-plugin-styled-components`,
         `gatsby-plugin-sharp`,
         `gatsby-transformer-sharp`,
+        {
+            resolve: 'gatsby-plugin-sitemap',
+            options: {
+                query: `
+              {
+                allSitePage {
+                  nodes {
+                    id
+                    path
+                  }
+                }
+              }
+              
+            `,
+                resolveSiteUrl: () => siteUrl,
+                resolvePages: ({ allSitePage: { nodes: allPages } }) => {
+                    return allPages.map(page => {
+                        return { ...page }
+                    })
+                },
+                serialize: ({ path }) => {
+                    return {
+                        url: path,
+                    }
+                },
+            },
+        },
         {
             resolve: 'gatsby-transformer-remark',
             options: {
