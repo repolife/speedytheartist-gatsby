@@ -7,7 +7,10 @@ import { LinkContainer } from './LinkContainer'
 import { motion } from 'framer-motion'
 
 const Link = styled(({ isActive, ...props }) => (
-    <GastbyLink activeStyle={{ transform: 'scale(1.5)' }} {...props} />
+    <GastbyLink
+        activeStyle={{ transform: isActive ? 'scale(1.5)' : '' }}
+        {...props}
+    />
 ))`
     font-size: 1.2rem;
     color: #fff;
@@ -28,6 +31,20 @@ export const NavLink = ({ name, to }) => {
         },
         inactive: {},
     }
+
+    useEffect(() => {
+        if (!location) return
+        if (!to) return
+        const isPath = location.pathname.includes(to)
+
+        console.log(isPath)
+
+        if (isPath) {
+            console.table(to, isPath)
+
+            setIsActive(!isActive)
+        }
+    }, [location, to])
 
     return (
         <LinkContainer isActive={isActive}>
