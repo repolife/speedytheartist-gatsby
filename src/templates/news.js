@@ -6,7 +6,6 @@ export const News = ({ pageContext }) => {
 
     if (!nodes) return loading
 
-    console.log(nodes)
     return (
         <RootElement>
             <Collection>

@@ -37,11 +37,7 @@ export const NavLink = ({ name, to }) => {
         if (!to) return
         const isPath = location.pathname.includes(to)
 
-        console.log(isPath)
-
         if (isPath) {
-            console.table(to, isPath)
-
             setIsActive(!isActive)
         }
     }, [location, to])

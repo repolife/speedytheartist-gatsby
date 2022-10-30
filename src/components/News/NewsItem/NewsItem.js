@@ -10,7 +10,7 @@ export const NewsItem = ({ item }) => {
         childImageSharp,
         childMarkdownRemark: {
             fields: { slug },
-            frontmatter: { blurb, url, title, image },
+            frontmatter: { title, image },
         },
     } = news.edges[0].node
 
@@ -21,7 +21,7 @@ export const NewsItem = ({ item }) => {
     return (
         <News>
             <News.Title>
-                {item?.childMarkdownRemark.frontmatter.title ?? item?.title}
+                {item?.childMarkdownRemark.frontmatter.title ?? title}
             </News.Title>
             <News.Image
                 src={item?.childMarkdownRemark.frontmatter.image ?? image}
