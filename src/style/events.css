@@ -1,0 +1,8 @@
+.bit-widget-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.bit-widget {
+    min-width: 100%;
+}
