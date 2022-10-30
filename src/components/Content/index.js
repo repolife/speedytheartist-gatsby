@@ -8,7 +8,8 @@ const Content = styled(motion.div)`
     flex-direction: column;
     padding-left: 17vw;
     padding-right: 1em;
-    overflow: hidden;
+    overflow-y: hidden;
+    overflow-x: scroll;
 `
 const Text = styled.div`
     height: auto;
