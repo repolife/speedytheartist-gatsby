@@ -15,7 +15,7 @@ const MusicItem = styled.iframe`
         2;
     padding: 1em;
     max-height: 30vh;
-    width: 25vw;
+    width: ${props => props.width ?? '25vw'};
     @media only screen and (max-width: 950px) {
         width: 100%;
     }

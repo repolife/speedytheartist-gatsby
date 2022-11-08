@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import MusicItem from '.'
 import { Loader } from '@components/Loader/Loader'
-export const Music = ({ url }) => {
+export const Music = ({ url, width }) => {
     return (
         <MusicItem
+            width={width}
             src={`https://embed.odesli.co/?url=${url}&theme=dark`}
             frameborder="0"
             loading="lazy"
