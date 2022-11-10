@@ -3,66 +3,69 @@ const path = require('path')
 const qs = require('qs')
 const axios = require('axios')
 
-const {
-    SPOTIFY_CLIENT_ID: client_id,
-    SPOTIFY_SECRET: client_secret,
-    GATSBY_SPOTIFY_ARTIST_ID: artistId,
-} = process.env
+// exports.sourceNodes = async ({
+//     actions,
+//     createNodeId,
+//     createContentDigest,
+//     graphql
+// }) => {
+//     const {
+//         SPOTIFY_CLIENT_ID: client_id,
+//         SPOTIFY_SECRET: client_secret,
+//         GATSBY_SPOTIFY_ARTIST_ID: artistId,
+//     } = process.env
 
-exports.sourceNodes = async ({
-    actions,
-    createContentDigest,
-    createNodeId,
-    getNodesByType,
-}) => {
-    const { createNode } = actions
-    const auth_token = Buffer.from(
-        `${client_id}:${client_secret}`,
-        'utf-8'
-    ).toString('base64')
+//     const auth_token = Buffer.from(
+//         `${client_id}:${client_secret}`,
+//         'utf-8'
+//     ).toString('base64')
 
-    const token_url = 'https://accounts.spotify.com/api/token'
-    const data = qs.stringify({ grant_type: 'client_credentials' })
+//     const token_url = 'https://accounts.spotify.com/api/token'
+//     const data = qs.stringify({ grant_type: 'client_credentials' })
 
-    const response = await axios.post(token_url, data, {
-        headers: {
-            Authorization: `Basic ${auth_token}`,
-            'Content-Type': 'application/x-www-form-urlencoded',
-        },
-    })
+//     const response = await axios.post(token_url, data, {
+//         headers: {
+//             Authorization: `Basic ${auth_token}`,
+//             'Content-Type': 'application/x-www-form-urlencoded',
+//         },
+//     })
 
-    const access_token = await response.data.access_token
+//     console.log(response)
+//     const access_token = await response.data.access_token
 
-    const spotifyData = await axios.get(
-        `https://api.spotify.com/v1/artists/${artistId}/albums`,
+//     const spotifyData = await axios.get(
+//         `https://api.spotify.com/v1/artists/${artistId}/albums`,
 
-        {
-            headers: {
-                Authorization: `Bearer ${access_token}`,
-                'Content-type': 'application/json',
-            },
-            params: {
-                limit: 50,
-                market: 'US',
-                groups: 'single,album',
-            },
-        }
-    )
-    const ALBUM_NODE_TYPE = `Album`
-    spotifyData.data.items.forEach(album =>
-        createNode({
-            ...album,
-            id: createNodeId(`${ALBUM_NODE_TYPE}-${album.id}`),
-            parent: null,
-            children: [],
-            internal: {
-                type: ALBUM_NODE_TYPE,
-                contentDigest: createContentDigest(album),
-            },
-        })
-    )
-}
-exports.createPages = async ({ actions, graphql }) => {
+//         {
+//             headers: {
+//                 Authorization: `Bearer ${access_token}`,
+//                 'Content-type': 'application/json',
+//             },
+//             params: {
+//                 limit: 50,
+//                 market: 'US',
+//                 groups: 'single,album',
+//             },
+//         }
+//     )
+//     const { createNode } = actions
+
+//     const ALBUM_NODE_TYPE = `Album`
+//     await spotifyData.data.items.forEach(album =>
+//         createNode({
+//             ...album,
+//             id: createNodeId(`${ALBUM_NODE_TYPE}-${album.id}`),
+//             parent: null,
+//             children: [],
+//             internal: {
+//                 type: ALBUM_NODE_TYPE,
+//                 contentDigest: createContentDigest(album),
+//             },
+//         })
+//     )
+// }
+
+exports.createPages = async ({ graphql, actions }) => {
     const { createPage } = actions
     const results = await graphql(`
         {
@@ -125,6 +128,7 @@ exports.createPages = async ({ actions, graphql }) => {
 
     // Music
     await results.data.music.nodes.forEach(node => {
+        console.log(node)
         if (node.errors) {
             node.errors.forEach(e => console.error(e.toString()))
             return Promise.reject(node.errors)
@@ -187,7 +191,6 @@ exports.createPages = async ({ actions, graphql }) => {
         }
     })
 }
-
 exports.onCreateNode = ({ node, actions, getNode }) => {
     const { createNodeField } = actions
 

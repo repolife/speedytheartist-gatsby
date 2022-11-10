@@ -4,7 +4,7 @@ require('dotenv').config({
     path: `.env.${process.env.NODE_ENV}`,
 })
 const siteUrl = process.env.URL || `https://www.speedytheartist.com`
-
+const client_id = process.env.SPOTIFY_CLIENT_ID
 module.exports = {
     siteMetadata: {
         title: 'Speedy The Artist',
@@ -75,6 +75,15 @@ module.exports = {
             resolve: 'gatsby-plugin-html-attributes',
             options: {
                 lang: 'en',
+            },
+        },
+
+        {
+            resolve: `source-plugin`,
+            options: {
+                client_id: '7775413f6caf4913a45ea741f24dd1b7',
+                client_secret: '7407e9ccaabc41ceb534a6b8639c3610',
+                artistId: '3yJssZSsFFWOzJmTaNjHYV',
             },
         },
         `gatsby-plugin-styled-components`,
