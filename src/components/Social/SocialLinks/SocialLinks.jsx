@@ -31,9 +31,9 @@ export const SocialLink = ({ name, url, props, animate }) => {
 
     if (nameToLower === 'bandcamp') {
         return (
-            <LinktWrapper url={url} name={name}>
+            <LinkWrapper url={url} name={name}>
                 <FaBandcamp {...props} />
-            </LinktWrapper>
+            </LinkWrapper>
         )
     }
 
