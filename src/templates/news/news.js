@@ -20,3 +20,5 @@ export const News = ({ pageContext }) => {
         </RootElement>
     )
 }
+
+export default News

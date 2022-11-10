@@ -29,11 +29,11 @@ export const SocialLink = ({ name, url, props, animate }) => {
         )
     }
 
-    if (nameToLower === 'bandcmp') {
+    if (nameToLower === 'bandcamp') {
         return (
-            <LinkWrapper url={url} name={name}>
+            <LinktWrapper url={url} name={name}>
                 <FaBandcamp {...props} />
-            </LinkWrapper>
+            </LinktWrapper>
         )
     }
 

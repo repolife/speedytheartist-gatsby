@@ -6,7 +6,8 @@ import '@style/events.css'
 
 export const Events = ({}) => {
     const [isLoading, setIsLoading] = useState(true)
-    const script = document.getElementById('bw')
+    const script =
+        typeof window !== 'undefined' ? document.getElementById('bw') : null
 
     useEffect(() => {
         setTimeout(() => {
