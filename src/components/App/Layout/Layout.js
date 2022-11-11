@@ -9,27 +9,12 @@ import { useQuery } from '@tanstack/react-query'
 import { Loader } from '@components/Loader/Loader'
 
 export const Layout = ({ children }) => {
-    const { GATSBY_SPOTIFY_ARTIST_ID: artistId } = process.env
-
     const data = useStaticQuery(graphql`
         {
-            music: allFile(filter: { sourceInstanceName: { eq: "music" } }) {
-                edges {
-                    node {
-                        id
-                        childImageSharp {
-                            fluid(maxWidth: 500) {
-                                src
-                            }
-                        }
-                        childMarkdownRemark {
-                            frontmatter {
-                                title
-                                spotify
-                                image
-                            }
-                        }
-                    }
+            music: allSitePage(filter: { path: { glob: "/music/*" } }) {
+                nodes {
+                    path
+                    pageContext
                 }
             }
             news: allFile(filter: { sourceInstanceName: { eq: "news" } }) {
@@ -58,84 +43,109 @@ export const Layout = ({ children }) => {
             }
         }
     `)
-    const {
-        isLoading: loadingToken,
-        data: token,
-        isSuccess: tokenSuccess,
-    } = useQuery(['token'], async () => {
-        const response = await axios.get(`/.netlify/functions/spotify`)
-        const token = await response.data?.data?.access_token
-        return await token
-    })
+    // const {
+    //     isLoading: loadingToken,
+    //     data: token,
+    //     isSuccess: tokenSuccess,
+    // } = useQuery(['token'], async () => {
+    //     const response = await axios.get(`/.netlify/functions/spotify`)
+    //     const token = await response.data?.data?.access_token
+    //     return await token
+    // })
 
-    const {
-        data: albums,
-        isLoading: loadingAlbums,
-        isSuccess: albumSuccess,
-    } = useQuery(
-        ['albums', token],
-        async () => {
-            const response = await axios.get(
-                `https://api.spotify.com/v1/artists/${artistId}/albums`,
+    // const {
+    //     data: albums,
+    //     isLoading: loadingAlbums,
+    //     isSuccess: albumSuccess,
+    // } = useQuery(
+    //     ['albums', token],
+    //     async () => {
+    //         const response = await axios.get(
+    //             `https://api.spotify.com/v1/artists/${artistId}/albums`,
 
-                {
-                    headers: {
-                        Authorization: `Bearer ${token}`,
-                        'Content-type': 'application/json',
-                    },
-                    params: {
-                        limit: 50,
-                        market: 'US',
-                        groups: 'single,album',
-                    },
-                }
-            )
-            const items = await response.data?.items
-            return await items
-        },
-        { enabled: !!token }
-    )
+    //             {
+    //                 headers: {
+    //                     Authorization: `Bearer ${token}`,
+    //                     'Content-type': 'application/json',
+    //                 },
+    //                 params: {
+    //                     limit: 50,
+    //                     market: 'US',
+    //                     groups: 'single,album',
+    //                 },
+    //             }
+    //         )
+    //         const items = await response.data?.items
+    //         return await items
+    //     },
+    //     { enabled: !!token }
+    // )
+
+    // const preparedSpotifyItems = useMemo(() => {
+    //     if (!data) return
+
+    //     const items = []
+
+    //     if (!albums && data) {
+    //         const {
+    //             id,
+    //             childImageSharp,
+    //             childMarkdownRemark: {
+    //                 frontmatter: { title, spotify, image },
+    //             },
+    //         } = data.music.edges[0].node
+
+    //         items.push({
+    //             id,
+    //             url: spotify,
+    //             title,
+    //             artwork: childImageSharp?.fluid?.src ?? image,
+    //         })
+    //     }
+
+    //     if (albums) {
+    //         const sorted = albums.sort(
+    //             (a, b) => new Date(b.release_date) - new Date(a.release_date)
+    //         )
+    //         sorted.map(item =>
+    //             items.push({
+    //                 id: item.id,
+    //                 title: item.name,
+    //                 artwork: item.images[0].url,
+    //                 url: item.external_urls.spotify,
+    //             })
+    //         )
+    //     }
+
+    //     const featured = items[0]
+
+    //     return { items, featured }
+    // }, [albums, data])
 
     const preparedSpotifyItems = useMemo(() => {
         if (!data) return
 
         const items = []
 
-        if (!albums && data) {
-            const {
-                id,
-                childImageSharp,
-                childMarkdownRemark: {
-                    frontmatter: { title, spotify, image },
-                },
-            } = data.music.edges[0].node
+        const sorted = data.music.nodes.sort(
+            (a, b) => new Date(b.release_date) - new Date(a.release_date)
+        )
 
+        console.log(sorted)
+        sorted.map(item =>
             items.push({
-                id,
-                url: spotify,
-                title,
-                artwork: childImageSharp?.fluid?.src ?? image,
+                id: item.pageContext.id,
+                title: item.pageContext.field.name,
+                artwork: item.pageContext.field.images[0].url,
+                url: item.pageContext.field.external_urls.spotify,
+                pathname: item.path,
             })
-        }
-
-        if (albums) {
-            const sorted = albums.sort(
-                (a, b) => new Date(b.release_date) - new Date(a.release_date)
-            )
-            sorted.map(item =>
-                items.push({
-                    id: item.id,
-                    title: item.name,
-                    artwork: item.images[0].url,
-                    url: item.external_urls.spotify,
-                })
-            )
-        }
+        )
 
         const featured = items[0]
 
         return { items, featured }
-    }, [albums, data])
+    }, [data])
 
     return (
         <Container>
@@ -149,7 +159,7 @@ export const Layout = ({ children }) => {
                         news: data.news,
                     }}
                 >
-                    <Main>{!albums && !data ? <Loader /> : children}</Main>
+                    <Main>{!data ? <Loader /> : children}</Main>
                 </MusicContext.Provider>
             )}
         </Container>
