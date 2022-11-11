@@ -1,5 +1,6 @@
 import { createGlobalStyle } from 'styled-components'
 import styled from 'styled-components'
+import { Link } from 'gatsby'
 
 const pallet = {
     darkOrange: '#852a10',
@@ -7,6 +8,7 @@ const pallet = {
     yellow: '#9e9045',
 }
 const defaultMargin = '5px'
+const defaultFont = 'oswald'
 
 const LinkStyle = {
     width: '50%',
@@ -123,7 +125,7 @@ const Artist = styled.div`
     background-repeat: no-repeat;
 `
 const Title = styled.h1`
-    font-family: oswald;
+    font-family: ${defaultFont};
     font-size: 30px;
     color: #222;
     padding-left: 2vw;
@@ -142,6 +144,14 @@ const Collection = styled.div`
     overflow: overlay;
     justify-content: center;
 `
+
+const InternalLink = styled(Link)`
+    color: white;
+    font-family: ${defaultFont};
+    text-align: center;
+    text-decoration: none;
+    font-size: 1.5rem;
+`
 export {
     GlobalStyle,
     Collection,
@@ -157,4 +167,5 @@ export {
     Logo,
     pallet,
     Title,
+    InternalLink,
 }
