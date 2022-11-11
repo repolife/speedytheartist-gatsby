@@ -15,6 +15,7 @@ import {
     FaFacebook,
     FaTiktok,
     FaSpotify,
+    FaSoundcloud,
 } from 'react-icons/fa'
 import { LinkWrapper } from '../LinkWrapper/LinkWrapper'
 
@@ -25,6 +26,14 @@ export const SocialLink = ({ name, url, props, animate }) => {
         return (
             <LinkWrapper url={url} name={name}>
                 <FaFacebook {...props} />
+            </LinkWrapper>
+        )
+    }
+
+    if (nameToLower === 'soundcloud') {
+        return (
+            <LinkWrapper url={url} name={name}>
+                <FaSoundcloud {...props} />
             </LinkWrapper>
         )
     }
