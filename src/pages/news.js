@@ -7,7 +7,7 @@ const News = () => {
 }
 
 export const Head = () => {
-    return <SEO title="Speedy The Artist | News page" />
+    return <SEO title="News page" />
 }
 
 export default News
