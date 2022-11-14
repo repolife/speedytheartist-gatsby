@@ -1,7 +1,7 @@
 import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 
-export const SEO = ({ title }) => {
+export const SEO = ({ title, keywords }) => {
     const {
         site: { siteMetadata },
     } = useStaticQuery(graphql`
@@ -54,6 +54,10 @@ export const SEO = ({ title }) => {
                 content={siteMetadata.description}
             />
             <meta property="twitter:image" content={image} />
+            <meta
+                name="keywords"
+                content={`${siteMetadata.title}, ${title}, ${keywords} Music, Rap, Seattle, Venezuela`}
+            />
             {/* Google font CDN */}
             <link
                 href="https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800|Oswald:400,500,600,700'"
