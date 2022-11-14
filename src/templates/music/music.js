@@ -34,7 +34,12 @@ export const Music = ({ pageContext: { field } }) => {
 }
 
 export const Head = ({ pageContext }) => {
-    return <SEO title={`Speedy The Artist | ${pageContext.field.name}`} />
+    return (
+        <SEO
+            title={`${pageContext.field.name}`}
+            keywords="streaming, spotify, streaming platforms,"
+        />
+    )
 }
 
 export default Music
