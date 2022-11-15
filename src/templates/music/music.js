@@ -38,6 +38,7 @@ export const Head = ({ pageContext }) => {
         <SEO
             title={`${pageContext.field.name}`}
             keywords="streaming, spotify, streaming platforms,"
+            cardImage={pageContext.field.images[0].url}
         />
     )
 }

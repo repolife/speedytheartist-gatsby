@@ -1,7 +1,7 @@
 import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 
-export const SEO = ({ title, keywords }) => {
+export const SEO = ({ title, keywords, cardImage }) => {
     const {
         site: { siteMetadata },
     } = useStaticQuery(graphql`
@@ -18,7 +18,7 @@ export const SEO = ({ title, keywords }) => {
         }
     `)
 
-    const image = `${siteMetadata.siteUrl}${siteMetadata.image}`
+    const image = cardImage ?? `${siteMetadata.siteUrl}${siteMetadata.image}`
 
     return (
         <>

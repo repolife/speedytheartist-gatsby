@@ -17,7 +17,11 @@ export const Nav = () => {
                 transition={{ duration: 0.8 }}
             >
                 {' '}
-                <Artist img="/img/artist.png" alt="speedy the artist" />
+                <Artist
+                    img="/img/artist.png"
+                    alt="Speedy The Artist"
+                    title="Speedy The Artist"
+                />
             </motion.div>
 
             <Menu>
