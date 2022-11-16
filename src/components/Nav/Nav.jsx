@@ -4,12 +4,30 @@ import { NavLink } from './NavLink'
 import { Footer } from '../Footer/Footer'
 import logo from '../../assets/images/logo.png'
 import { motion } from 'framer-motion'
+import { useStaticQuery, graphql } from 'gatsby'
 
 export const Nav = () => {
+    const {
+        site: {
+            siteMetadata: { title },
+        },
+    } = useStaticQuery(graphql`
+        {
+            site {
+                siteMetadata {
+                    title
+                }
+            }
+        }
+    `)
     return (
         <Left>
             <LogoContainer>
-                <Logo src={logo} alt="logo" />
+                <Logo
+                    src={logo}
+                    alt={`${title} logo`}
+                    title={`${title} logo`}
+                />
             </LogoContainer>
             <motion.div
                 initial={{ opacity: 0, scale: 1 }}
@@ -17,11 +35,13 @@ export const Nav = () => {
                 transition={{ duration: 0.8 }}
             >
                 {' '}
-                <Artist
-                    img="/img/artist.png"
-                    alt="Speedy The Artist"
-                    title="Speedy The Artist"
-                />
+                <Artist>
+                    <Artist.img
+                        src={'/img/artist.png'}
+                        alt={`${title}`}
+                        title={`${title} `}
+                    />
+                </Artist>
             </motion.div>
 
             <Menu>
