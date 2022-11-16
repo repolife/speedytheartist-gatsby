@@ -110,7 +110,6 @@ const Menu = styled.div`
     margin-top: 150px;
     width: 30%;
 `
-
 const Artist = styled.div`
     height: 80vh;
     width: 30vw;
@@ -119,10 +118,13 @@ const Artist = styled.div`
     top: 10vh;
     overflow: hidden;
     box-shadow: 0 0 40fx rgba(0, 0, 0, 0.1);
-    background-image: url(${props => props.img});
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
+`
+
+Artist.img = styled.img`
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
 `
 const Title = styled.h1`
     font-family: ${defaultFont};

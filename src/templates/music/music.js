@@ -6,10 +6,10 @@ import { Title } from '@style/base'
 import MusicItem from './index'
 import { FacebookShareButton } from 'react-share'
 import { useLocation } from '@reach/router'
+import { Lyrics } from '@components/Lyrics/Lyrics'
 
 export const Music = ({ pageContext: { field } }) => {
     const location = useLocation()
-    console.log(location)
     const mainArtistName = 'Speedy The Artist'
     const defaultArtist = field.artists[0].name
     const isMainArtist = defaultArtist === mainArtistName
@@ -38,6 +38,7 @@ export const Head = ({ pageContext }) => {
         <SEO
             title={`${pageContext.field.name}`}
             keywords="streaming, spotify, streaming platforms,"
+            cardImage={pageContext.field.images[0].url}
         />
     )
 }
