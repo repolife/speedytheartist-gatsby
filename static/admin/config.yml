@@ -111,6 +111,29 @@ collections:
                 - gordon_ramsay
                 - speed_and_patron
                 - hang_loose
+                - honeymoon
+                - hell_made_me_stable
+                - welcome_to_my_mind
+                - amarme
+                - toxico
+                - self_aware
+                - patched_heart
+                - beyond
+                - leave_it_all_behind
+                - milestone
+                - out_of_bounds
+                - brand_new
+                - gaf:_got_a_fee
+                - my_best_critic
+                - suntan
+                - pain
+                - start_from_scratch
+                - rich_rap
+                - in_a_box
+                - spanglish_flow
+                - gordon_ramsay
+                - speed_and_patron
+                - hang_loose
     - name: video
       label: video
       folder: content/video
@@ -120,11 +143,12 @@ collections:
       editor:
           preview: false
       widget: relation
-      collection: 'page'
-      value_field: 'page.type'
+      collection: page
+      value_field: page.type
       search_fields:
           - page.type
-      display_fields: ['page.title']
+      display_fields:
+          - page.type
       fields:
           - label: Name
             name: name
