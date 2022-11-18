@@ -1,7 +1,7 @@
 import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 
-export const SEO = ({ title, keywords, cardImage }) => {
+export const SEO = ({ title, keywords, cardImage, description }) => {
     const {
         site: { siteMetadata },
     } = useStaticQuery(graphql`
@@ -19,6 +19,7 @@ export const SEO = ({ title, keywords, cardImage }) => {
     `)
 
     const image = cardImage ?? `${siteMetadata.siteUrl}${siteMetadata.image}`
+    const twitterDescription = description ?? siteMetadata.description
 
     return (
         <>
@@ -49,10 +50,7 @@ export const SEO = ({ title, keywords, cardImage }) => {
             <meta property="twitter:card" content="summary_large_image" />
             <meta property="twitter:url" content={siteMetadata.siteUrl} />
             <meta property="twitter:title" content={siteMetadata.title} />
-            <meta
-                property="twitter:description"
-                content={siteMetadata.description}
-            />
+            <meta property="twitter:description" content={twitterDescription} />
             <meta property="twitter:image" content={image} />
             <meta
                 name="keywords"
