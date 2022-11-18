@@ -20,7 +20,7 @@ export const Lyrics = ({ artist, track }) => {
         { enabled: !!track && !!artist }
     )
     if (!isSuccess) {
-        return <h2>Niggs</h2>
+        return null
     }
 }
 
