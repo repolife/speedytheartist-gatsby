@@ -80,6 +80,8 @@ exports.createPages = async ({ graphql, actions }) => {
             context: {
                 id,
                 field: { ...node },
+                pathname: `${pageName}`,
+                test: 'shit',
             },
         })
 
