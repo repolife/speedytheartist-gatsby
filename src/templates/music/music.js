@@ -8,8 +8,10 @@ import { FacebookShareButton } from 'react-share'
 import { useLocation } from '@reach/router'
 import { Lyrics } from '@components/Lyrics/Lyrics'
 import ThemeContext from '@context/ThemeContext'
-
-export const Music = ({ pageContext: { field } }) => {
+import { graphql } from 'gatsby'
+import { Video } from '@components/Video/Video'
+export const Music = ({ pageContext: { field, pathname }, data }) => {
+    console.log(data)
     const mainArtistName = 'Speedy The Artist'
     const defaultArtist = field.artists[0].name
 
@@ -18,8 +20,6 @@ export const Music = ({ pageContext: { field } }) => {
         title: `${defaultArtist} - ${field.name} - album cover`,
         alt: `${defaultArtist} - ${field.name} - album cover`,
     })
-
-    console.log(field)
 
     const artist =
         field.album_group === 'appears_on'
@@ -44,6 +44,11 @@ export const Music = ({ pageContext: { field } }) => {
                         url={field.external_urls.spotify}
                     />
                     <p>{`Released ${field.release_date}`}</p>
+                    {data && (
+                        <Video
+                            videoId={data.markdownRemark.frontmatter.video}
+                        />
+                    )}
                 </MusicItem>
             </RootElement>
         </ThemeContext.Provider>
@@ -63,5 +68,15 @@ export const Head = ({ pageContext }) => {
         />
     )
 }
+
+export const query = graphql`
+    query ($pathname: String) {
+        markdownRemark(frontmatter: { title: { eq: $pathname } }) {
+            frontmatter {
+                video
+            }
+        }
+    }
+`
 
 export default Music
