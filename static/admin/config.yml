@@ -163,11 +163,11 @@ collections:
         collection: video
         required: false
         search_fields:
-          - url
-        value_field: url
+          - videoId
+        value_field: videoId
         display_fields:
           - name
-          - url
+          - videoId
       - label: Related News
         required: false
         name: news
@@ -187,15 +187,9 @@ collections:
     editor:
       preview: false
     fields:
-      - label: Name
-        name: name
-        widget: string
-      - label: Url
-        name: url
-        widget: string
       - label: Related Page
         required: true
-        name: page
+        name: name
         widget: relation
         collection: page
         search_fields:
@@ -203,6 +197,9 @@ collections:
         value_field: title
         display_fields:
           - title
+      - label: Youtube Video id
+        name: videoId
+        widget: string
   - name: news
     label: news
     folder: content/news

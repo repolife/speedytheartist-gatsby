@@ -9,7 +9,7 @@ import { useLocation } from '@reach/router'
 import { Lyrics } from '@components/Lyrics/Lyrics'
 import ThemeContext from '@context/ThemeContext'
 import { graphql } from 'gatsby'
-
+import { Video } from '@components/Video/Video'
 export const Music = ({ pageContext: { field, pathname }, data }) => {
     console.log(data)
     const mainArtistName = 'Speedy The Artist'
@@ -45,9 +45,8 @@ export const Music = ({ pageContext: { field, pathname }, data }) => {
                     />
                     <p>{`Released ${field.release_date}`}</p>
                     {data && (
-                        <iframe
-                            width={640}
-                            src={data.markdownRemark.frontmatter.video}
+                        <Video
+                            videoId={data.markdownRemark.frontmatter.video}
                         />
                     )}
                 </MusicItem>
