@@ -1,10 +1,11 @@
-import React, { useEffect, useState, useMemo } from 'react'
+import React, { useState, useMemo } from 'react'
 import { Main } from '@components/Content/Main'
 import { Nav } from '../../Nav/Nav'
 import { GlobalStyle, Container } from '../../../style/base'
 import { MusicContext } from '@context/MusicContext'
 import { useStaticQuery, graphql } from 'gatsby'
 import { Loader } from '@components/Loader/Loader'
+import { ThemeContext } from '@context/ThemeContext'
 
 export const Layout = ({ children }) => {
     const data = useStaticQuery(graphql`
@@ -39,6 +40,11 @@ export const Layout = ({ children }) => {
                     }
                 }
             }
+            site {
+                siteMetadata {
+                    title
+                }
+            }
         }
     `)
 
@@ -51,7 +57,6 @@ export const Layout = ({ children }) => {
             (a, b) => new Date(b.release_date) - new Date(a.release_date)
         )
 
-        console.log(sorted)
         sorted.map(item =>
             items.push({
                 id: item.pageContext.id,
@@ -70,6 +75,7 @@ export const Layout = ({ children }) => {
     return (
         <Container>
             <GlobalStyle />
+
             <Nav />
             {preparedSpotifyItems && (
                 <MusicContext.Provider

@@ -1,74 +1,228 @@
 backend:
-    name: git-gateway
-    branch: master
-
-local_backend: true
-
+  name: git-gateway
+  branch: master
+local_backend:
+  url: http://localhost:8082/api/v1
+  allowed_hosts:
+    - 192.168.0.1
 site_url: https://speedytheartist.com
-
 media_folder: static/assets/images/uploads
 public_folder: /assets/images/uploads
-
 collections:
-    - name: 'music'
-      label: 'music'
-      folder: 'content/music'
-      create: true
-      slug: 'index'
-      path: '{{title}}/index'
-      media_folder: ''
-      public_folder: ''
-      editor:
-          preview: false
-      fields:
-          - { label: 'Title', name: 'title', widget: 'string' }
-          - { label: 'Release Date', name: 'date', widget: 'datetime' }
-          - { label: 'Artwork', name: 'image', widget: 'image' }
-          - { label: 'Spotify Url', name: 'spotify', widget: 'string' }
-
-    - name: 'bio'
-      label: 'bio'
-      folder: 'content/bio'
-      create: true
-      slug: 'index'
-      path: '{{title}}/index'
-      editor:
-          preview: false
-      fields:
-          - { label: 'Title', name: 'title', widget: 'string' }
-          - { label: 'Body', name: 'body', widget: 'text' }
-    - name: 'links'
-      label: 'links'
-      folder: 'content/links'
-      create: true
-      slug: 'index'
-      path: '{{type}}/index'
-      editor:
-          preview: false
-      widget: 'list'
-      fields:
-          - { label: 'Name', name: 'name', widget: 'string' }
-          - { label: 'URL', name: 'url', widget: 'string' }
-          - {
-                label: 'type',
-                name: 'type',
-                widget: 'select',
-                options: ['Social', 'Music', 'Support', 'Tour', 'Video'],
-                default: ['Social'],
-            }
-    - name: 'news'
-      label: 'news'
-      folder: 'content/news'
-      create: true
-      slug: 'index'
-      path: '{{title}}/index'
-      media_folder: ''
-      public_folder: ''
-      editor:
-          preview: true
-      fields:
-          - { label: 'Title', name: 'title', widget: 'string' }
-          - { label: 'Date', name: 'date', widget: 'datetime' }
-          - { label: 'Image', name: 'image', widget: 'image' }
-          - { label: 'URL', name: 'url', widget: 'string' }
-          - { label: 'Blurb', name: 'blurb', widget: 'text' }
+  - name: music
+    label: music
+    folder: content/music
+    create: true
+    slug: index
+    path: '{{title}}/index'
+    media_folder: ''
+    public_folder: ''
+    editor:
+      preview: false
+    fields:
+      - label: Title
+        name: title
+        widget: string
+      - label: Release Date
+        name: date
+        widget: datetime
+      - label: Artwork
+        name: image
+        widget: image
+      - label: Spotify Url
+        name: spotify
+        widget: string
+  - name: bio
+    label: bio
+    folder: content/bio
+    create: true
+    slug: index
+    path: '{{title}}/index'
+    editor:
+      preview: false
+    fields:
+      - label: Title
+        name: title
+        widget: string
+      - label: Body
+        name: body
+        widget: text
+  - name: links
+    label: links
+    folder: content/links
+    create: true
+    slug: index
+    path: '{{type}}/index'
+    editor:
+      preview: false
+    widget: list
+    fields:
+      - label: Name
+        name: name
+        widget: string
+      - label: URL
+        name: url
+        widget: string
+      - label: type
+        name: type
+        widget: select
+        options:
+          - Social
+          - Music
+          - Support
+          - Tour
+          - Video
+        default:
+          - Social
+  - name: page
+    label: page
+    folder: content/page
+    create: true
+    slug: index
+    path: '{{type}}/index'
+    editor:
+      preview: false
+    widget: list
+    fields:
+      - label: Select Page
+        name: title
+        widget: select
+        options:
+          - honeymoon
+          - hell_made_me_stable
+          - welcome_to_my_mind
+          - amarme
+          - toxico
+          - self_aware
+          - patched_heart
+          - beyond
+          - leave_it_all_behind
+          - milestone
+          - out_of_bounds
+          - brand_new
+          - gaf:_got_a_fee
+          - my_best_critic
+          - suntan
+          - pain
+          - start_from_scratch
+          - rich_rap
+          - in_a_box
+          - spanglish_flow
+          - gordon_ramsay
+          - speed_and_patron
+          - hang_loose
+          - honeymoon
+          - hell_made_me_stable
+          - welcome_to_my_mind
+          - amarme
+          - toxico
+          - self_aware
+          - patched_heart
+          - beyond
+          - leave_it_all_behind
+          - milestone
+          - out_of_bounds
+          - brand_new
+          - gaf:_got_a_fee
+          - my_best_critic
+          - suntan
+          - pain
+          - start_from_scratch
+          - rich_rap
+          - in_a_box
+          - spanglish_flow
+          - gordon_ramsay
+          - speed_and_patron
+          - hang_loose
+          - honeymoon
+          - hell_made_me_stable
+          - welcome_to_my_mind
+          - amarme
+          - toxico
+          - self_aware
+          - patched_heart
+          - beyond
+          - leave_it_all_behind
+          - milestone
+          - out_of_bounds
+          - brand_new
+          - gaf:_got_a_fee
+          - my_best_critic
+          - suntan
+          - pain
+          - start_from_scratch
+          - rich_rap
+          - in_a_box
+          - spanglish_flow
+          - gordon_ramsay
+          - speed_and_patron
+          - hang_loose
+      - label: Related Video
+        name: video
+        widget: relation
+        collection: video
+        required: false
+        search_fields:
+          - videoId
+        value_field: videoId
+        display_fields:
+          - name
+          - videoId
+      - label: Related News
+        required: false
+        name: news
+        widget: relation
+        collection: news
+        search_fields:
+          - title
+        value_field: title
+        display_fields:
+          - title
+  - name: video
+    label: video
+    folder: content/video
+    create: true
+    slug: index
+    path: '{{type}}/index'
+    editor:
+      preview: false
+    fields:
+      - label: Related Page
+        required: true
+        name: name
+        widget: relation
+        collection: page
+        search_fields:
+          - title
+        value_field: title
+        display_fields:
+          - title
+      - label: Youtube Video id
+        name: videoId
+        widget: string
+  - name: news
+    label: news
+    folder: content/news
+    create: true
+    slug: index
+    path: '{{title}}/index'
+    media_folder: ''
+    public_folder: ''
+    editor:
+      preview: true
+    fields:
+      - label: Title
+        name: title
+        widget: string
+      - label: Date
+        name: date
+        widget: datetime
+      - label: Image
+        name: image
+        widget: image
+      - label: URL
+        name: url
+        widget: string
+      - label: Blurb
+        name: blurb
+        widget: text

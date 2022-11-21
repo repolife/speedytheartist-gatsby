@@ -7,20 +7,29 @@ export const Lyrics = ({ artist, track }) => {
         ['artist', 'track', 'apikey'],
         async () => {
             const response = await axios.get(
-                `https://api.musixmatch.com/ws/1.1/matcher.lyrics.get`,
+                `${process.env.GATSBY_LYRICS_URL}`,
                 {
+                    headers: { 'Content-Type': 'applicaton/json' },
                     params: {
-                        q_track: track,
-                        q_artist: artist,
-                        apikey: process.env.GATSBY_MUSIX_MATCH_API_KEY,
+                        uid: process.env.GATSBY_LYRICS_UID,
+                        tokenid: process.env.GATSBY_LYRICS_TOKEN,
+                        term: track,
+                        artist,
+                        format: 'json',
                     },
                 }
             )
+
+            console.log(response)
         },
         { enabled: !!track && !!artist }
     )
     if (!isSuccess) {
-        return <h2>Niggs</h2>
+        return null
+    }
+
+    if (data) {
+        return <h2>lyrics</h2>
     }
 }
 

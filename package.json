@@ -51,9 +51,11 @@
     "react-helmet": "^6.1.0",
     "react-icons": "^4.4.0",
     "react-share": "^4.4.1",
+    "react-share-social": "^0.1.55",
     "styled-components": "^5.3.6"
   },
   "devDependencies": {
+    "js-yaml": "^4.1.0",
     "prettier": "^2.7.1"
   },
   "overrides": {

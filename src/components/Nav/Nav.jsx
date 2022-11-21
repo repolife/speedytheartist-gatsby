@@ -1,12 +1,15 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Left, LogoContainer, Artist, Menu, Logo } from '../../style/base'
 import { NavLink } from './NavLink'
 import { Footer } from '../Footer/Footer'
 import logo from '../../assets/images/logo.png'
 import { motion } from 'framer-motion'
 import { useStaticQuery, graphql } from 'gatsby'
+import ThemeContext from '@context/ThemeContext'
 
 export const Nav = () => {
+    const { image } = useContext(ThemeContext)
+
     const {
         site: {
             siteMetadata: { title },
@@ -37,9 +40,10 @@ export const Nav = () => {
                 {' '}
                 <Artist>
                     <Artist.img
-                        src={'/img/artist.png'}
-                        alt={`${title}`}
-                        title={`${title} `}
+                        src={image ? image.src : '/img/artist.png'}
+                        alt={image ? image.alt : title}
+                        title={image ? image.title : title}
+                        object={image}
                     />
                 </Artist>
             </motion.div>

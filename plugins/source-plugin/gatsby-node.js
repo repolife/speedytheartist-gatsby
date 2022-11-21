@@ -3,7 +3,7 @@ const qs = require('qs')
 const axios = require('axios')
 require('dotenv')
 exports.sourceNodes = async (
-    { actions, createContentDigest, createNodeId },
+    { actions, createContentDigest, createNodeId, cache },
     pluginOptions
 ) => {
     const { createNode } = actions

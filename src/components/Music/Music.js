@@ -1,6 +1,7 @@
-import React, { useState } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import MusicItem from '.'
 import { Loader } from '@components/Loader/Loader'
+
 export const Music = ({ url, width }) => {
     return (
         <MusicItem

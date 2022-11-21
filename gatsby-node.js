@@ -1,69 +1,7 @@
 const { createFilePath } = require('gatsby-source-filesystem')
+const fs = require('fs')
 const path = require('path')
-const qs = require('qs')
-const axios = require('axios')
-
-// exports.sourceNodes = async ({
-//     actions,
-//     createNodeId,
-//     createContentDigest,
-//     graphql
-// }) => {
-//     const {
-//         SPOTIFY_CLIENT_ID: client_id,
-//         SPOTIFY_SECRET: client_secret,
-//         GATSBY_SPOTIFY_ARTIST_ID: artistId,
-//     } = process.env
-
-//     const auth_token = Buffer.from(
-//         `${client_id}:${client_secret}`,
-//         'utf-8'
-//     ).toString('base64')
-
-//     const token_url = 'https://accounts.spotify.com/api/token'
-//     const data = qs.stringify({ grant_type: 'client_credentials' })
-
-//     const response = await axios.post(token_url, data, {
-//         headers: {
-//             Authorization: `Basic ${auth_token}`,
-//             'Content-Type': 'application/x-www-form-urlencoded',
-//         },
-//     })
-
-//     console.log(response)
-//     const access_token = await response.data.access_token
-
-//     const spotifyData = await axios.get(
-//         `https://api.spotify.com/v1/artists/${artistId}/albums`,
-
-//         {
-//             headers: {
-//                 Authorization: `Bearer ${access_token}`,
-//                 'Content-type': 'application/json',
-//             },
-//             params: {
-//                 limit: 50,
-//                 market: 'US',
-//                 groups: 'single,album',
-//             },
-//         }
-//     )
-//     const { createNode } = actions
-
-//     const ALBUM_NODE_TYPE = `Album`
-//     await spotifyData.data.items.forEach(album =>
-//         createNode({
-//             ...album,
-//             id: createNodeId(`${ALBUM_NODE_TYPE}-${album.id}`),
-//             parent: null,
-//             children: [],
-//             internal: {
-//                 type: ALBUM_NODE_TYPE,
-//                 contentDigest: createContentDigest(album),
-//             },
-//         })
-//     )
-// }
+const yaml = require('js-yaml')
 
 exports.createPages = async ({ graphql, actions }) => {
     const { createPage } = actions
@@ -117,7 +55,7 @@ exports.createPages = async ({ graphql, actions }) => {
                         name
                     }
                     release_date
-                    album_type
+                    album_group
                     external_urls {
                         spotify
                     }
@@ -126,25 +64,42 @@ exports.createPages = async ({ graphql, actions }) => {
         }
     `)
 
+    const doc = yaml.load(fs.readFileSync('./static/admin/config.yml', 'utf8'))
     // Music
     await results.data.music.nodes.forEach(node => {
-        console.log(node)
         if (node.errors) {
             node.errors.forEach(e => console.error(e.toString()))
             return Promise.reject(node.errors)
         }
         const id = node.id
-        const name = node.name.replace(/\s+/g, '_').toLowerCase()
+        const pageName = node.name.replace(/\s+/g, '_').toLowerCase()
         createPage({
-            path: `music/${name}`,
+            path: `music/${pageName}`,
             component: path.resolve(`src/templates/music/music.js`),
             // additional data can be passed via context
             context: {
                 id,
                 field: { ...node },
+                pathname: `${pageName}`,
+                test: 'shit',
             },
         })
+
+        try {
+            const collections = doc.collections
+            const links = collections.filter(c => c.name === 'page')[0]
+            const typeField = links.fields.filter(f => f.name === 'type')[0]
+            typeField.options = [...typeField.options, `${pageName}`]
+        } catch (e) {
+            console.log(e)
+        }
     })
+    fs.writeFile('./static/admin/config.yml', yaml.dump(doc), err => {
+        if (err) {
+            console.log('shit', err)
+        }
+    })
+
     await results.data.news.nodes.forEach(node => {
         if (node.errors) {
             node.errors.forEach(e => console.error(e.toString()))
@@ -165,6 +120,7 @@ exports.createPages = async ({ graphql, actions }) => {
             },
         })
     })
+
     //News Collection
     await results.data.collections.distinct.forEach(collection => {
         if (collection.errors) {
@@ -191,6 +147,7 @@ exports.createPages = async ({ graphql, actions }) => {
         }
     })
 }
+
 exports.onCreateNode = ({ node, actions, getNode }) => {
     const { createNodeField } = actions
 
