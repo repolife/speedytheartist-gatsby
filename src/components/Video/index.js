@@ -14,7 +14,7 @@ const Source = styled.iframe`
     top: 0;
     left: 0;
     width: 50vw;
-    height: 50vh;
+    height: 100%;
 `
 VideoItem.Source = Source
 export default VideoItem
