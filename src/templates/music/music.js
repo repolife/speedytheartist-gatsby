@@ -44,9 +44,9 @@ export const Music = ({ pageContext: { field, pathname }, data }) => {
                         url={field.external_urls.spotify}
                     />
                     <p>{`Released ${field.release_date}`}</p>
-                    {data && (
+                    {data.markdownRemark?.frontmatter.video && (
                         <Video
-                            videoId={data.markdownRemark.frontmatter.video}
+                            videoId={data.markdownRemark?.frontmatter.video}
                         />
                     )}
                 </MusicItem>
