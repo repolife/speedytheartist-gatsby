@@ -3,11 +3,15 @@ import VideoItem from '.'
 import { Title } from '@style/base'
 
 export const Video = ({ videoId }) => {
+    if (!videoId) {
+        return null
+    }
     return (
         <>
             {' '}
-            <Title>Video</Title>
             <VideoItem>
+                <Title>Video</Title>
+
                 <VideoItem.Source
                     src={`https://www.youtube.com/embed/${videoId}`}
                 />
