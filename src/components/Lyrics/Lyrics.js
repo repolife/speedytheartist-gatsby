@@ -1,6 +1,7 @@
 import React from 'react'
 import { useQuery } from '@tanstack/react-query'
 import axios from 'axios'
+import { LinkStyle } from '@style/base'
 
 export const Lyrics = ({ artist, track }) => {
     const { isLoading, data, isError, isSuccess } = useQuery(
@@ -20,7 +21,7 @@ export const Lyrics = ({ artist, track }) => {
                 }
             )
 
-            console.log(response)
+            return response.data.result
         },
         { enabled: !!track && !!artist }
     )
@@ -29,7 +30,21 @@ export const Lyrics = ({ artist, track }) => {
     }
 
     if (data) {
-        return <h2>lyrics</h2>
+        return (
+            <a
+                style={{
+                    textAlign: 'center',
+                    ...LinkStyle,
+                    fontSize: '1em',
+                    marginTop: '1em',
+                }}
+                href={data['artist-link']}
+                target="_blank"
+                rel="no_opener noreferrer"
+            >
+                Lyrics
+            </a>
+        )
     }
 }
 
