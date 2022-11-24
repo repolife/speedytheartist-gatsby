@@ -10,6 +10,7 @@ export const Featured = () => {
 
     return (
         <Music
+            width={'100%'}
             title={featured.title}
             artwork={featured.artwork}
             url={featured.url}

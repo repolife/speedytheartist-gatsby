@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react'
 import { RootElement } from '@components/App/RootElement/RootElement'
 import { Music as MusicDisplay } from '@components/Music/Music'
 import { SEO } from '@components/SEO/SEO'
-import { Title } from '@style/base'
+import { Title, InternalLink } from '@style/base'
 import MusicItem from './index'
 import { ShareSocial } from 'react-share-social'
 import { useLocation } from '@reach/router'
@@ -10,11 +10,13 @@ import { Lyrics } from '@components/Lyrics/Lyrics'
 import ThemeContext from '@context/ThemeContext'
 import { graphql } from 'gatsby'
 import { Video } from '@components/Video/Video'
+
 export const Music = ({ pageContext: { field, pathname }, data }) => {
-    console.log(data)
     const location = useLocation()
     const mainArtistName = 'Speedy The Artist'
     const defaultArtist = field.artists[0].name
+
+    const { markdownRemark } = data
 
     const [image, setImage] = useState({
         src: field.images[0].url,
@@ -44,10 +46,16 @@ export const Music = ({ pageContext: { field, pathname }, data }) => {
                         url={field.external_urls.spotify}
                     />
                     <p>{`Released ${field.release_date}`}</p>
-                    {data.markdownRemark?.frontmatter.video && (
-                        <Video
-                            videoId={data.markdownRemark?.frontmatter.video}
-                        />
+                    {markdownRemark?.frontmatter?.video !== undefined && (
+                        <Video videoId={markdownRemark?.frontmatter.video} />
+                    )}
+                    <Lyrics artist={field.artists[0].name} track={field.name} />
+                    {markdownRemark?.frontmatter?.news !== undefined && (
+                        <InternalLink
+                            to={`${location.origin}/news/${markdownRemark?.frontmatter.news}`}
+                        >
+                            Related News
+                        </InternalLink>
                     )}
 
                     <ShareSocial
@@ -60,8 +68,8 @@ export const Music = ({ pageContext: { field, pathname }, data }) => {
                             'email',
                         ]}
                         style={{
-                            root: { background: 'transparent' },
-                            copyContainer: { display: 'none' },
+                            root: { background: 'transparent', color: 'red' },
+                            copyContainer: { display: 'none', height: '10vh' },
                         }}
                     />
                 </MusicItem>
@@ -89,6 +97,7 @@ export const query = graphql`
         markdownRemark(frontmatter: { title: { eq: $pathname } }) {
             frontmatter {
                 video
+                news
             }
         }
     }

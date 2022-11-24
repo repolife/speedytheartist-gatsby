@@ -84,6 +84,7 @@ const Left = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    overflow: hidden;
 `
 
 const Span = styled.span`
