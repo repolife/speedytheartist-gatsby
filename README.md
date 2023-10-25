@@ -6,9 +6,9 @@
 -   SPOTIFY_SECRET
 -   GATSBY_SPOTIFY_ARTIST_ID
 
--   Install deps `npm ci`
--   Instal Netlify CLI `npm install netlify-cli -g`
--   Run locally `npm run develop`
+-   Install deps `pnpm ci`
+-   Instal Netlify CLI `pnpm install netlify-cli -g`
+-   Run locally `pnpm run develop`
 -   Run with Netlify Functions `ntl dev`
 
 ## Dev
