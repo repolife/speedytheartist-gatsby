@@ -13,7 +13,10 @@ const Contaner = styled.div`
         margin-top: auto;
         justify-content: center;
         margin-bottom: 10vh;
+    }
+    @media (pointer: none), (pointer: coarse) {
         overflow: scroll;
+        margin-bottom: 0;
     }
 `
 

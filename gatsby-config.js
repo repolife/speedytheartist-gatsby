@@ -103,6 +103,7 @@ module.exports = {
         `gatsby-plugin-styled-components`,
         `gatsby-plugin-sharp`,
         `gatsby-transformer-sharp`,
+        `gatsby-plugin-pnpm`,
         {
             resolve: 'gatsby-plugin-sitemap',
             options: {
