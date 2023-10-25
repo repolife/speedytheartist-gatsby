@@ -6,7 +6,8 @@ export const ThemeContext = createContext({
 })
 
 ThemeContext.displayName = 'ThemeContext'
-export const ThemeContextProvider = ({ image, setImage, children }) => {
+export const ThemeContextProvider = ({ children }) => {
+    const [image, setImage] = useState({})
     ;<ThemeContext.Provider value={{ image, setImage }}>
         {children}
     </ThemeContext.Provider>

@@ -10,6 +10,7 @@ import { Lyrics } from '@components/Lyrics/Lyrics'
 import ThemeContext from '@context/ThemeContext'
 import { graphql } from 'gatsby'
 import { Video } from '@components/Video/Video'
+import { useEffect } from 'react'
 
 export const Music = ({ pageContext: { field, pathname }, data }) => {
     const location = useLocation()
@@ -18,11 +19,15 @@ export const Music = ({ pageContext: { field, pathname }, data }) => {
 
     const { markdownRemark } = data
 
-    const [image, setImage] = useState({
-        src: field.images[0].url,
-        title: `${defaultArtist} - ${field.name} - album cover`,
-        alt: `${defaultArtist} - ${field.name} - album cover`,
-    })
+    const { image, setImage } = useContext(ThemeContext)
+
+    useEffect(() => {
+        setImage({
+            src: field.images[0].url,
+            title: `${defaultArtist} - ${field.name} - album cover`,
+            alt: `${defaultArtist} - ${field.name} - album cover`,
+        })
+    }, [field, defaultArtist])
 
     const artist =
         field.album_group === 'appears_on'
@@ -46,11 +51,11 @@ export const Music = ({ pageContext: { field, pathname }, data }) => {
                         url={field.external_urls.spotify}
                     />
                     <p>{`Released ${field.release_date}`}</p>
-                    {markdownRemark?.frontmatter?.video !== undefined && (
+                    {markdownRemark?.frontmatter?.video && (
                         <Video videoId={markdownRemark?.frontmatter.video} />
                     )}
                     <Lyrics artist={field.artists[0].name} track={field.name} />
-                    {markdownRemark?.frontmatter?.news !== undefined && (
+                    {markdownRemark?.frontmatter?.news && (
                         <InternalLink
                             to={`${location.origin}/news/${markdownRemark?.frontmatter.news}`}
                         >
