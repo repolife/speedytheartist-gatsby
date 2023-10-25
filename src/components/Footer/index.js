@@ -13,6 +13,7 @@ const Contaner = styled.div`
         margin-top: auto;
         justify-content: center;
         margin-bottom: 10vh;
+        overflow: scroll;
     }
 `
 

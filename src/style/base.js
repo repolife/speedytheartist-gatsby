@@ -129,13 +129,13 @@ Artist.img = styled.img`
 
     object-position: center;
 `
-const Title = styled.h1`
+const Title = styled.h2`
     font-family: ${defaultFont};
-    font-size: 30px;
+    font-size: 2.2rem;
     color: #222;
     padding-left: 2vw;
     margin: 10px 0 10px 0;
-    font-size: 2.5rem;
+    font-size: 2.2rem;
 `
 
 const Button = styled.button`
