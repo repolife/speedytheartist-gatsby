@@ -1,5 +1,5 @@
 backend:
-  name: git-gateway
+  name: git
   branch: master
 local_backend:
   url: http://localhost:8082/api/v1

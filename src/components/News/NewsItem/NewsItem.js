@@ -12,7 +12,9 @@ export const NewsItem = ({ item }) => {
             fields: { slug },
             frontmatter: { title, image },
         },
-    } = news.edges[0].node
+    } = news.edges[1].node
+
+    console.log(news.edges)
 
     if (!news) {
         return null
@@ -24,13 +26,17 @@ export const NewsItem = ({ item }) => {
                 {item?.childMarkdownRemark.frontmatter.title ?? title}
             </News.Title>
             <News.Image
-                src={item?.childMarkdownRemark.frontmatter.image ?? image}
+                src={`/content/news/${
+                    item?.childMarkdownRemark.frontmatter.image ?? image
+                }`}
             />
 
             <News.Button
                 onClick={() =>
                     navigate(
-                        `/news${item?.childMarkdownRemark.fields?.slug ?? slug}`
+                        `content/news${
+                            item?.childMarkdownRemark.fields?.slug ?? slug
+                        }`
                     )
                 }
             >
