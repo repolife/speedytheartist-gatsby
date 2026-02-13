@@ -9,17 +9,16 @@ export const News = ({ pageContext }) => {
     if (!nodes) return null
 
     return (
-        <RootElement>
             <Collection>
-                {' '}
+ 
                 {nodes &&
                     Object.keys(nodes).map(node => {
                         const { id } = nodes[node].node
 
                         return <NewsItem key={id} item={nodes[node].node} />
                     })}
+
             </Collection>
-        </RootElement>
     )
 }
 export const Head = () => {
