@@ -104,6 +104,7 @@ module.exports = {
         `gatsby-plugin-sharp`,
         `gatsby-transformer-sharp`,
         `gatsby-plugin-pnpm`,
+        `gatsby-plugin-netlify`,
         {
             resolve: 'gatsby-plugin-sitemap',
             options: {
